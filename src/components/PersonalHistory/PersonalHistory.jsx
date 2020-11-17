@@ -8,10 +8,9 @@ const PersonalHistory = () => {
   const localId = useSelector(s => s.auth.success.localId);
 
   useEffect(() => {
-    if (userIsAuthentificated && localId) {
-      console.log("PersonalHistory -> userIsAuthentificated", userIsAuthentificated);
+    // if (userIsAuthentificated && localId) {
       dispatch(getSalaries(userIsAuthentificated));
-    }
+    // }
   }, [dispatch, userIsAuthentificated, localId])
 
   return !userIsAuthentificated

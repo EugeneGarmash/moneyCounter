@@ -48,13 +48,14 @@ const SalaryStep = props => {
 
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(s => s.auth.success.idToken);
+  const userIsAuthentificated = useSelector(s => s.auth.success.idToken);
 
   const handleSalaryInputChange = event => {
     props.setSalaryValue(event.target.value);
   }
   const handlePressEnter = (event) => {
     if (event.key === 'Enter' && props.salaryValue) {
-      props.initializeACounter();
+      props.initializeACounter(userIsAuthentificated);
     }
   }
 
@@ -122,6 +123,6 @@ export default connect(
     setSalaryValue: value => dispatch(setSalaryValue(value)),
     toggleAppState: () => dispatch(toggleAppState()),
     setCounterSalaryStep: () => dispatch(setCounterSalaryStep()),
-    initializeACounter: () => dispatch(initializeACounter()),
+    initializeACounter: (token) => dispatch(initializeACounter(token)),
   })
 )(Radium(SalaryStep));

@@ -23,8 +23,12 @@ export const setPersonalData = payload => {
   }
 }
 
-export const getSalaries = token => (dispatch) => {
-  testaxios.get(`/salaries.json?auth=${token}`)
+export const getSalaries = token => (dispatch, getState) => {
+  const userId = getState().auth.success.localId;
+  if (!userId) {
+    return;
+  }
+  testaxios.get(`/salaries/${userId}.json`)
       .then(response => {
           console.log("getPersonalData -> response", response.data);
           return dispatch(setPersonalData(response.data));

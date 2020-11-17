@@ -20,7 +20,6 @@ export const openModal = (modalName, data) => {
 }
 
 export const closeModal = modalName => {
-// console.log("modalName", modalName);
   return {
     type: CLOSE_MODAL,
     payload: {
@@ -31,7 +30,6 @@ export const closeModal = modalName => {
 }
 
 const modalReducer = (state = initialState, action) => {
-  // console.log("modalReducer -> action", action)
   switch(action.type) {
 
     case OPEN_MODAL:

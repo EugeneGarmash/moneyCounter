@@ -26,20 +26,20 @@ export const toggleCounterState = () => {
   return { type: TOGGLE_COUNTER_STATE };
 };
 
-export const initializeACounter = () => (dispatch, getState) => {
+export const initializeACounter = (token) => (dispatch, getState) => {
   dispatch(toggleAppState());
   dispatch(setCounterSalaryStep());
 
   const state = getState();
+  const userId = state.auth.success.localId;
   const salary = state.salary.salaryValue;
   const salaryStep = state.counter.counterSalaryStep.toFixed(3);
 
-  testaxios.post('/salaries.json', { salary, salaryStep }) // 
+  testaxios.post(`/salaries/${userId}.json`, { salary, salaryStep })
     .then(response => {
       dispatch(toggleCounterState());
     })
     .catch(error => {
-      console.log(error);
     });
 }
 
