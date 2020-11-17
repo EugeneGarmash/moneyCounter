@@ -2,16 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { routes } from '../../utils/constants';
 import { useDispatch, useSelector } from 'react-redux';
-
-import extraClasses from '../CounterStep/Multipliers/Multipliers.module.scss';
-import buttonClasses from '../AppMainButton/AppMainButton.module.scss';
 import {
-  BrowserRouter,
-  Switch,
-  Route,
-  Link,
+  // BrowserRouter,
+  // Switch,
+  // Route,
+  // Link,
   NavLink
 } from "react-router-dom";
+
 import Authentification from '../Authentification/Authentification';
 import Modal from '../Modal';
 import {
@@ -19,10 +17,13 @@ import {
   closeModal,
   AUTH_MODAL
 } from '../../redux/modalReducer/modalReducer';
+
+import extraClasses from '../CounterStep/Multipliers/Multipliers.module.scss';
+import buttonClasses from '../AppMainButton/AppMainButton.module.scss';
 import './AppHeader.scss';
 
-/** @info returns react-component
- * @info to modify styles use `props => condition ? a : b ` in template literals
+/** @info returns a react component
+ * to modify styles use `props => condition ? a : b ` in template literals
  * but do not forget to pass props first
  * */
 const StyledDisclaimer = styled.p`
@@ -36,12 +37,9 @@ const StyledDisclaimer = styled.p`
 const StyledH1 = styled.h1`
   margin: 0;
 `
-
-
 const SalaryStep = () => {
 
   const dispatch = useDispatch();
-  // const salaryValue = useSelector(s => s.salary.salaryValue);
   const authModalIsOpen = useSelector(s => s.modal[AUTH_MODAL].isOpen);
 
   const handleOpenModal = () => {
@@ -78,12 +76,14 @@ const SalaryStep = () => {
           </button>
         </li>
       </ul>
+
       <Modal
         isOpen={authModalIsOpen}
         onClose={handleCloseAuthModal}
       >
         <Authentification />
       </Modal>
+
       <StyledH1>Money counter</StyledH1>
       <StyledDisclaimer margin='0'>
         See how much your time cost
