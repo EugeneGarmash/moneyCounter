@@ -15,7 +15,7 @@ const Animation = props => {
   const renderAnimation = (param) => {
     switch (animationName) {
       case 'fire':
-        console.log('FIRE'); // постоянный ререндер из-за счётчика
+        // console.log('FIRE'); // постоянный ререндер из-за счётчика
         return (
           <Fire />
         )

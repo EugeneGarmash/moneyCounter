@@ -12,6 +12,7 @@ import AppFooter from '../AppFooter';
 import Spinner from '../Spinner';
 import PersonalHistory from '../PersonalHistory';
 import { routes } from '../../utils/constants';
+import Audio from '../Audio/Audio';
 
 import './App.scss';
 
@@ -37,6 +38,7 @@ const App = () =>  {
             </Switch>
 
             <Spinner /> {/** component ??*/}
+            <Audio />
 
           </div>
         </div>
