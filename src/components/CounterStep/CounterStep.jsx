@@ -7,18 +7,29 @@ import React, {
 import classes from './CounterStep.module.scss';
 import {
   useSelector,
+  useDispatch,
 } from 'react-redux';
 import getCorrectTimeName from '../../utils/getCorrectTimeName';
 import AdditionalInfo from './AdditionalSalaryInfo';
 import Multipliers from './Multipliers/Multipliers';
 import Animation from '../Animation/Animation';
-import bonfireWav from '../..//static/bonfire.wav';
+// import bonfireWav from '../../static/bonfire.wav';
+
+import { createAudio, pauseAudio } from '../../redux/audioReducer/audioReducer';
+
+import bonfireWav from '../../static/bonfire.wav';
+import forestWav from '../../static/forest.wav';
+
+
+const entertainmentMode = ['fire', 'forest', 'sea', 'rain', 'New Year'];
+
 
 const CounterStep = () => {
+  const dispatch = useDispatch();
   const timerId = useRef(null);
-  // const audioRef = useRef(null);
-  let audioRef = null;
+  // let audioRef = null;   // const audioRef = useRef(null);
   const counterTimeStep = useSelector(state => state.counter.counterTimeStep);
+  const audioInstance = useSelector(state => state.audio.audioInstance);
   const counterSalaryStep = useSelector(state => state.counter.counterSalaryStep);
   const counterIsActive = useSelector(state => state.counter.counterIsActive);
 
@@ -48,12 +59,20 @@ const CounterStep = () => {
     [counterIsActive, counterSalaryStep, counterTimeStep]
   );
 
+  useEffect(() => {
+    audioInstance && console.log(audioInstance.src);
+    audioInstance && audioInstance.play();
+    console.log("CounterStep -> audioInstance", audioInstance);
+  }, [audioInstance])
+
   const createAnAudio = () => {
-    audioRef = new Audio(bonfireWav);
-    audioRef.loop = true;
-    // audioRef.volume = 0.1;
-    console.log("createAnAudio -> audioRef", audioRef);
-    audioRef.play();
+    // audioRef = new Audio(bonfireWav);
+    // audioRef.loop = true;
+    // // audioRef.volume = 0.1;
+    // console.log("createAnAudio -> audioRef", audioRef);
+    // audioRef.play();
+
+    dispatch(createAudio());
 
     // audioRef.addEventListener("canplaythrough", event => {
     //   console.log('HEY');
@@ -62,12 +81,18 @@ const CounterStep = () => {
     // });
   }
 
-  const changeAudio = () => {
+  // const changeAudio = () => {
 
-  }
+  // }
 
 
   // new year
+
+
+  const handleChangeEntertainmentMode = mode => ()=> {
+    dispatch(createAudio(mode));
+  }
+
 
   useEffect(() => {
     createAnAudio();
@@ -91,6 +116,17 @@ const CounterStep = () => {
         <p>You get ~{counterSalaryStep.toFixed(2)} items per {counterTimeStep / 1000} second(s)</p>
       </div>
       <Animation animationName='forest' />
+      <ul className='enteratiningModes'>
+        {entertainmentMode.map(mode => (
+          <button
+            key={mode}
+            // onClick={handleChangeEntertainmentMode(mode)}
+            onClick={() => dispatch(pauseAudio())}
+          >
+            {mode}
+          </button>
+        ))}
+      </ul>
       {/* <Multipliers /> */}
       {/* <AdditionalInfo
         counterSalaryStep={counterSalaryStep}

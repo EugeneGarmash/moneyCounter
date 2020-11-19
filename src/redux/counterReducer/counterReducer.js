@@ -35,12 +35,12 @@ export const initializeACounter = (token) => (dispatch, getState) => {
   const salary = state.salary.salaryValue;
   const salaryStep = state.counter.counterSalaryStep.toFixed(3);
 
-  testaxios.post(`/salaries/${userId}.json`, { salary, salaryStep })
-    .then(response => {
+  // testaxios.post(`/salaries/${userId}.json`, { salary, salaryStep })
+  //   .then(response => {
       dispatch(toggleCounterState());
-    })
-    .catch(error => {
-    });
+    // })
+    // .catch(error => {
+    // });
 }
 
 export const setCounterSalaryStep = multiplier => (dispatch, getState) => {

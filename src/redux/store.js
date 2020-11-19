@@ -4,6 +4,7 @@ import appReducer from './appReducer/appReducer';
 import counterReducer from './counterReducer/counterReducer';
 import authReducer from './authReducer/authReducer';
 import modalReducer from './modalReducer/modalReducer';
+import audioReducer from './audioReducer/audioReducer';
 
 const rootReducer = combineReducers({
     app: appReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     counter: counterReducer,
     auth: authReducer,
     modal: modalReducer,
+    audio: audioReducer,
 });
 
 export default rootReducer;

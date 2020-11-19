@@ -35,14 +35,16 @@ const AppMainButton = props => {
 
   const handleCounterStepButtonClick = async (e) => {
     if (salaryValue) {
-      // console.log('to be contined');
       e.preventDefault();
       window.grecaptcha.ready(function() {
-        // console.log('ready');
         window.grecaptcha.execute('6LeT0OEZAAAAACWNvEOTwKHTF4L6vawvPVYQI8QS', {action: 'submit'})
           .then(function(token) {
-            // console.log(".then -> token", token);
+
+
             initializeACounter();
+
+
+
           }
         );
       });
