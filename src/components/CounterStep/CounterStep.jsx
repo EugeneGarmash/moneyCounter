@@ -11,9 +11,12 @@ import {
 import getCorrectTimeName from '../../utils/getCorrectTimeName';
 import AdditionalInfo from './AdditionalSalaryInfo';
 import Multipliers from './Multipliers/Multipliers';
+import bonfireWav from '../..//static/bonfire.wav';
 
 const CounterStep = () => {
   const timerId = useRef(null);
+  // const audioRef = useRef(null);
+  let audioRef = null;
   const counterTimeStep = useSelector(state => state.counter.counterTimeStep);
   const counterSalaryStep = useSelector(state => state.counter.counterSalaryStep);
   const counterIsActive = useSelector(state => state.counter.counterIsActive);
@@ -44,6 +47,24 @@ const CounterStep = () => {
     [counterIsActive, counterSalaryStep, counterTimeStep]
   );
 
+  const createAnAudio = () => {
+    audioRef = new Audio(bonfireWav);
+    audioRef.loop = true;
+    // audioRef.volume = 0.1;
+    console.log("createAnAudio -> audioRef", audioRef);
+    audioRef.play();
+
+    // audioRef.addEventListener("canplaythrough", event => {
+    //   console.log('HEY');
+    //   /* аудио может быть воспроизведено; проиграть, если позволяют разрешения */
+    //   audioRef.play();
+    // });
+  }
+
+  useEffect(() => {
+    createAnAudio();
+  }, [])
+
   useEffect(() => {
     startInterval();
     return () => clearTimeout(timerId.current);
@@ -61,6 +82,13 @@ const CounterStep = () => {
         </p>
         <p>You get ~{counterSalaryStep.toFixed(2)} items per {counterTimeStep / 1000} second(s)</p>
       </div>
+      {/* <audio controls> */}
+        {/* <source src="https://www.kozco.com/tech/LRMonoPhase4.wav" type="audio/wav" /> */}
+        {/* <source src={bonfireWav} type="audio/wav" /> */}
+        {/* <source src={bonfireMp3} type="audio/mp3" /> */}
+        {/* <p>Your browser doesn't support HTML5 audio. Here is
+          a <a href="https://www.kozco.com/tech/LRMonoPhase4.wav">link to the audio</a> instead.</p>
+      </audio> */}
       <Multipliers />
       <AdditionalInfo
         counterSalaryStep={counterSalaryStep}
