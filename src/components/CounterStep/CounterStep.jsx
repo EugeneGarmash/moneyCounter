@@ -11,6 +11,7 @@ import {
 import getCorrectTimeName from '../../utils/getCorrectTimeName';
 import AdditionalInfo from './AdditionalSalaryInfo';
 import Multipliers from './Multipliers/Multipliers';
+import Animation from '../Animation/Animation';
 import bonfireWav from '../..//static/bonfire.wav';
 
 const CounterStep = () => {
@@ -61,6 +62,13 @@ const CounterStep = () => {
     // });
   }
 
+  const changeAudio = () => {
+
+  }
+
+
+  // new year
+
   useEffect(() => {
     createAnAudio();
   }, [])
@@ -82,17 +90,11 @@ const CounterStep = () => {
         </p>
         <p>You get ~{counterSalaryStep.toFixed(2)} items per {counterTimeStep / 1000} second(s)</p>
       </div>
-      {/* <audio controls> */}
-        {/* <source src="https://www.kozco.com/tech/LRMonoPhase4.wav" type="audio/wav" /> */}
-        {/* <source src={bonfireWav} type="audio/wav" /> */}
-        {/* <source src={bonfireMp3} type="audio/mp3" /> */}
-        {/* <p>Your browser doesn't support HTML5 audio. Here is
-          a <a href="https://www.kozco.com/tech/LRMonoPhase4.wav">link to the audio</a> instead.</p>
-      </audio> */}
-      <Multipliers />
-      <AdditionalInfo
+      <Animation animationName='forest' />
+      {/* <Multipliers /> */}
+      {/* <AdditionalInfo
         counterSalaryStep={counterSalaryStep}
-      />
+      /> */}
     </>
   );
 }
