@@ -30,7 +30,7 @@ export const getSalaries = token => (dispatch, getState) => {
   }
   testaxios.get(`/salaries/${userId}.json`)
       .then(response => {
-          console.log("getPersonalData -> response", response.data);
+          // console.log("getPersonalData -> response", response.data);
           return dispatch(setPersonalData(response.data));
       });
 }

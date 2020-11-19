@@ -1,6 +1,10 @@
 ROUTER + COURSE 
 
 
+
+скидывать мелодию только при смене, паузе, стопе или мьюте
+
+
 TODO FIRST
   React router
   Context
@@ -15,7 +19,6 @@ TODO FIRST
     - https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
     - https://www.google.com/search?q=format+number+js&oq=format+Number+js&aqs=chrome.0.0l8.5013j0j7&sourceid=chrome&ie=UTF-8
 TODO NEXT
-  constants file
   SCSS variables
   Write some tests
   add component to CounterStep

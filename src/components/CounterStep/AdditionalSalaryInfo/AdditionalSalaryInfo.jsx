@@ -1,36 +1,7 @@
 import React from 'react';
 import classes from './AdditionalSalaryInfo.module.scss';
+import { additionalies } from '../../../utils/constants';
 
-const additionalies = [
-  {
-    seconds: 60,
-    time: 'per minute',
-  },
-  {
-    seconds: 3600,
-    time: 'per hour',
-  },
-  {
-    seconds: 32400,
-    time: 'per day',
-  },
-  {
-    seconds: 162000,
-    time: 'per workweek',
-  },
-  {
-    seconds: 712800,
-    time: 'per month',
-  },
-  {
-    seconds: 8553600,
-    time: 'per year',
-  },
-  {
-    seconds: 102643200,
-    time: 'when you\'re young (21 - 32 y.o.)',
-  },
-];
 
 const AdditionalSalaryInfo = props => {
   const {

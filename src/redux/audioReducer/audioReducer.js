@@ -1,6 +1,4 @@
-// import bonfireWav from '../../static/bonfire.wav';
-import forestWav from '../../static/forest.wav';
-
+import bonfireWav from '../../static/bonfire.wav';
 
 const CREATE_AUDIO = 'CREATE_AUDIO';
 const PAUSE_AUDIO = 'PAUSE_AUDIO';
@@ -9,47 +7,80 @@ const CHANGE_SOURCE = 'CHANGE_SOURCE';
 
 const initialState = {
   audioInstance: null,
-  // spinner: false,
+}
+
+const getAudioInstance = getState => {
+  return getState().audio.audioInstance;
 }
 
 export const createAudio = mode => {
-  console.log("createAudio -> createAudio");
   return {
     type: CREATE_AUDIO,
     payload: mode,
   }
 };
 
-export const changeSource = src => {
-  return {
-    type: CHANGE_SOURCE,
-    payload: src,
-  }
-};
+export const playAudio = () => (dispatch, getState) => {
+  const audioInstance = getAudioInstance(getState);
+  audioInstance.play();
 
-export const pauseAudio = () => (dispatch, getState) => {
-  const audioInstance = getState().audio.audioInstance;
-  audioInstance.pause();
-  return {
+  return dispatch({
     type: PAUSE_AUDIO,
     payload: audioInstance, // same object ? better be so
-  }
+  });
+}
+
+export const pauseAudio = () => (dispatch, getState) => {
+  const audioInstance = getAudioInstance(getState);
+  audioInstance.pause();
+
+  return dispatch({ // may alter the initial audioInstance
+    type: PAUSE_AUDIO,
+    payload: audioInstance, // same object ? better be so
+  });
 };
 
-export const handleVolume = () => () => {
-  // return {
-  //   type: HANDLE_VOLUME,
-  // }
+export const changeSource = src => (dispatch, getState) => {
+  const audioInstance = getAudioInstance(getState);
+  audioInstance.src = src;
+  return dispatch({
+    type: CHANGE_SOURCE,
+    payload: audioInstance, // same object ? better be so
+  });
+}
+
+export const handleVolume = volumeLevel => (dispatch, getState) => {
+  const audioInstance = getAudioInstance(getState)
+  audioInstance.volume = volumeLevel;
+  return dispatch({
+    type: HANDLE_VOLUME,
+    payload: audioInstance, // same object ? better be so
+  });
+};
+
+export const launchAnAudio = mode => (dispatch, getState) => {
+  dispatch(createAudio(mode));
+  dispatch(playAudio());
+}
+
+export const changeTrack = src => (dispatch, _) => {
+  dispatch(pauseAudio());
+  dispatch(changeSource(src));
+  dispatch(playAudio());
 };
 
 
-const appReducer = (state = initialState, action) => {
+const audioReducer = (state = initialState, action) => {
   switch(action.type) {
 
     case CREATE_AUDIO:
+
+      const audioInstance = new Audio(bonfireWav);
+      audioInstance.loop = true;
+
       return {
         ...state,
-        audioInstance: new Audio(forestWav)
+        audioInstance,
       }
 
     case PAUSE_AUDIO:
@@ -59,20 +90,16 @@ const appReducer = (state = initialState, action) => {
       }
 
     case CHANGE_SOURCE: {
-
-      // const newAudio = state.audioInstance.pause();
-
-      // p_prime = p.cloneNode(true)
-
       return {
         ...state,
-        audioInstance: null,
+        audioInstance: action.payload,
       }
     }
 
     case HANDLE_VOLUME:
       return {
         ...state,
+        audioInstance: action.payload,
       }
 
     default:
@@ -81,4 +108,4 @@ const appReducer = (state = initialState, action) => {
   }
 }
 
-export default appReducer;
+export default audioReducer;

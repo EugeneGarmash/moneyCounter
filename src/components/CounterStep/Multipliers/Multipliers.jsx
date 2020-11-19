@@ -4,8 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setCounterSalaryStep } from '../../../redux/counterReducer/counterReducer';
 import classes from './Multipliers.module.scss';
 import buttonClasses from '../../AppMainButton/AppMainButton.module.scss';
-
-const incomeArray = [1, 1.5, 2, 5];
+import { incomeArray } from '../../../utils/constants';
 
 const Multipliers = () => {
 

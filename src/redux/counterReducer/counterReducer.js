@@ -1,19 +1,15 @@
 import { toggleAppState } from '../appReducer/appReducer';
+import { changeEntertainmentMode } from '../appReducer/appReducer';
+import {
+  entertainmentMode,
+  counterTimeStepInSeconds,
+  counterTimeStep,
+  time,
+} from '../../utils/constants';
 import testaxios from '../../utils/testaxios.js';
 
 const SET_COUNTER_SALARY_STEP = 'SET_COUNTER_SALARY_STEP';
 const TOGGLE_COUNTER_STATE = 'TOGGLE_COUNTER_STATE';
-
-const counterTimeStepInSeconds = 1; // constants!!!
-const counterTimeStep = counterTimeStepInSeconds * 1000;
-const time = {
-  daysInAYear: 365,
-  workDaysInAYear: 261,
-  monthsInAYear: 12,
-  hoursInADay: 24,
-  workHoursInADay: 9,
-  secondsInAnHour: 3600,
-}
 
 const initialState = {
   counterTimeStep,
@@ -29,6 +25,7 @@ export const toggleCounterState = () => {
 export const initializeACounter = (token) => (dispatch, getState) => {
   dispatch(toggleAppState());
   dispatch(setCounterSalaryStep());
+  dispatch(changeEntertainmentMode(Object.entries(entertainmentMode)[0]));
 
   const state = getState();
   const userId = state.auth.success.localId;
