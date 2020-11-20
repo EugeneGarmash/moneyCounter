@@ -1,5 +1,7 @@
 ROUTER + COURSE 
 
+share with friends
+
 скидывать мелодию только при смене, паузе, стопе или мьюте
 sessionStorage
 
