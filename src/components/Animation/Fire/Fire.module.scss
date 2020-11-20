@@ -31,10 +31,16 @@ $animationtime:1.5s;
          background-color: $yellow;
          border-radius: 1vw;
          &:nth-child(2n + 1) {
-            animation: flameodd $animationtime ease-in infinite;
+            animation: flameodd $animationtime ease-in infinite running;
+         }
+         &:nth-child(2n + 1).paused {
+            animation-play-state: paused;
          }
          &:nth-child(2n) {
-            animation: flameeven $animationtime ease-in infinite;
+            animation: flameeven $animationtime ease-in infinite running;
+         }
+         &:nth-child(2n).paused {
+            animation-play-state: paused;
          }
          &:nth-child(1) {
             animation-delay:0s;

@@ -1,9 +1,9 @@
-import { changeTrack, launchAnAudio } from "../audioReducer/audioReducer";
+import { changeTrack, launchAnAudio, pauseAudio } from "../audioReducer/audioReducer";
+import { toggleCounterState } from '../counterReducer/counterReducer';
 
 const TOGGLE_APP_STATE = 'TOGGLE_APP_STATE';
 const TOGGLE_APP_SPINNER = 'TOGGLE_APP_SPINNER';
 const CHANGE_ENTERTAINMENT_MODE = 'CHANGE_ENTERTAINMENT_MODE';
-const SET_ENTERTAINMENT_MODE = 'SET_ENTERTAINMENT_MODE';
 
 const initialState = {
   appIsInSalaryStep: true,
@@ -19,10 +19,18 @@ export const toggleAppSpinner = () => ({
 });
 
 export const changeEntertainmentMode = payload => (dispatch, getState) => {
-  const audioInstance = getState().audio.audioInstance;
   const [name, sound] = payload;
 
-  dispatch({ type: CHANGE_ENTERTAINMENT_MODE, name });
+  const state = getState();
+  const counterIsActive = state.counter.counterIsActive;
+  const audioInstance = state.audio.audioInstance;
+
+  dispatch({ type: CHANGE_ENTERTAINMENT_MODE, payload: name });
+
+  if (!counterIsActive) { // leave audio muted
+    return;
+  }
+
   audioInstance /** @info initialRender */
     ? dispatch(changeTrack(sound))
     : dispatch(launchAnAudio());

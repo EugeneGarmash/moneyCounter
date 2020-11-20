@@ -151,7 +151,7 @@ $darkBlue: #163b38;
   background-size: 115%;
   background-position: 40%;
 
-  animation: movesun 16s linear normal infinite;
+  animation: movesun 16s linear normal infinite running;
 
    &::before{
     content: "";
@@ -164,6 +164,10 @@ $darkBlue: #163b38;
     bottom: 0;
     opacity: .7;
   }
+}
+
+.sun.paused {
+  animation-play-state: paused;
 }
 
 @keyframes movesun {

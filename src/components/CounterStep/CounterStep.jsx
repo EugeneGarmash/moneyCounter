@@ -13,9 +13,10 @@ import getCorrectTimeName from '../../utils/getCorrectTimeName';
 // import AdditionalInfo from './AdditionalSalaryInfo';
 // import Multipliers from './Multipliers/Multipliers';
 import Animation from '../Animation/Animation';
-// import { createAudio, changeTrack, pauseAudio } from '../../redux/audioReducer/audioReducer';
 import { entertainmentMode } from '../../utils/constants';
 import { changeEntertainmentMode } from '../../redux/appReducer/appReducer';
+import multipliersClasses from '../CounterStep/Multipliers/Multipliers.module.scss';
+import buttonClasses from '../AppMainButton/AppMainButton.module.scss';
 
 const CounterStep = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const CounterStep = () => {
   const counterTimeStep = useSelector(state => state.counter.counterTimeStep);
   const counterSalaryStep = useSelector(state => state.counter.counterSalaryStep);
   const counterIsActive = useSelector(state => state.counter.counterIsActive);
+  const appEntertainmentMode = useSelector(s => s.app.entertainmentMode);
 
   const [counterState, setCounterPassed] = useState({
     secondsPassed: 0,
@@ -67,20 +69,23 @@ const CounterStep = () => {
         </p>
         <p>You get ~{counterSalaryStep.toFixed(2)} items per {counterTimeStep / 1000} second(s)</p>
       </div>
-      <Animation animationName='forest' />
-      <ul className='enteratiningModes'>
+      <Animation />
+      <ul className={multipliersClasses.Multipliers}>
         {Object.entries(entertainmentMode).map(entry => {
           const name = entry[0];
-          return (
+          return ( // <li></li>
             <button
               key={name}
+              className={buttonClasses.AppMainButton}
               onClick={() => dispatch(changeEntertainmentMode(entry))}
+              disabled={name === appEntertainmentMode} // disabled ??
             >
               {name}
             </button>
           )
         })}
       </ul>
+
       {/*
         <Multipliers />
         <AdditionalInfo

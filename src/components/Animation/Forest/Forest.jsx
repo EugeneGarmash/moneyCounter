@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Forest.module.scss';
 
-const Forest = () => {
+const Forest = props => {
   return (
     <div className={classes.triangles}>
       <div className={classes.triangle2}></div>
@@ -9,7 +9,7 @@ const Forest = () => {
       <div className={classes.triangle3}></div>
       <div className={classes.triangle5}></div>
       <div className={classes.triangle6}></div>
-      <div className={classes.sun}></div>
+      <div className={`${classes.sun} ${props.paused ? classes.paused : ''}`}></div>
     </div>
   )
 };

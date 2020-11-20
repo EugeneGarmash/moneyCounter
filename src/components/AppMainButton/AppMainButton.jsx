@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import propTypes from 'prop-types';
 
 import { toggleAppState } from '../../redux/appReducer/appReducer';
@@ -10,6 +10,7 @@ import {
 } from '../../redux/counterReducer/counterReducer';
 
 import classes from './AppMainButton.module.scss';
+import { pauseAudio, playAudio } from '../../redux/audioReducer/audioReducer';
 
 export const Button = (props) => {
   return (
@@ -31,7 +32,10 @@ const AppMainButton = props => {
     salaryValue,
     toggleCounterState,
     initializeACounter,
+    onPauseAudio, /** it happens when I forget to destructurize a prop - then no dispatch is fired */
+    onPlayAudio,
   } = props;
+
 
   const handleCounterStepButtonClick = async (e) => {
     if (salaryValue) {
@@ -40,10 +44,7 @@ const AppMainButton = props => {
         window.grecaptcha.execute('6LeT0OEZAAAAACWNvEOTwKHTF4L6vawvPVYQI8QS', {action: 'submit'})
           .then(function(token) {
 
-
             initializeACounter();
-
-
 
           }
         );
@@ -53,10 +54,14 @@ const AppMainButton = props => {
 
   const handlePause = () => {
     toggleCounterState();
+    counterIsActive
+      ? onPauseAudio()
+      : onPlayAudio()
+
   }
 
   const handleStop = () => {
-    toggleAppState();
+    toggleAppState(); // handle this case
   }
 
 
@@ -109,4 +114,6 @@ export default connect(
     toggleCounterState,
     setCounterSalaryStep,
     initializeACounter,
+    onPauseAudio: pauseAudio,
+    onPlayAudio: playAudio,
 })(AppMainButton);

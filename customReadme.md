@@ -1,9 +1,7 @@
 ROUTER + COURSE 
 
-
-
 скидывать мелодию только при смене, паузе, стопе или мьюте
-
+sessionStorage
 
 TODO FIRST
   React router

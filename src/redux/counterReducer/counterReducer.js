@@ -7,6 +7,7 @@ import {
   time,
 } from '../../utils/constants';
 import testaxios from '../../utils/testaxios.js';
+import { pauseAudio, playAudio } from '../audioReducer/audioReducer';
 
 const SET_COUNTER_SALARY_STEP = 'SET_COUNTER_SALARY_STEP';
 const TOGGLE_COUNTER_STATE = 'TOGGLE_COUNTER_STATE';
@@ -18,13 +19,14 @@ const initialState = {
   counterIsActive: false,
 }
 
-export const toggleCounterState = () => {
-  return { type: TOGGLE_COUNTER_STATE };
+export const toggleCounterState = () => (dispatch, getState) => {
+  return dispatch({ type: TOGGLE_COUNTER_STATE });
 };
 
 export const initializeACounter = (token) => (dispatch, getState) => {
   dispatch(toggleAppState());
   dispatch(setCounterSalaryStep());
+  dispatch(toggleCounterState());
   dispatch(changeEntertainmentMode(Object.entries(entertainmentMode)[0]));
 
   const state = getState();
@@ -34,7 +36,7 @@ export const initializeACounter = (token) => (dispatch, getState) => {
 
   // testaxios.post(`/salaries/${userId}.json`, { salary, salaryStep })
   //   .then(response => {
-      dispatch(toggleCounterState());
+      // dispatch(toggleCounterState());
     // })
     // .catch(error => {
     // });

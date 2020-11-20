@@ -1,39 +1,45 @@
-import { render } from "@testing-library/react";
 import React from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import Fire from './Fire/Fire';
 import Forest from './Forest/Forest';
-// import Sea from './Sea/Sea';
-// import Rain from './Rain/Rain';
+import Sea from './Sea/Sea';
+import Rain from './Rain/Rain';
 // import NewYear from './NewYear/NewYear';
+
+// remove audio when paused ??
+// снимается пауза по "РАН"
 
 import classes from './Animation.module.scss';
 
-const Animation = props => {
+const Animation = () => {
 
-  const { animationName } = props;
+  const entertainmentMode = useSelector(s => s.app.entertainmentMode);
+  const counterIsActive = useSelector(s => s.counter.counterIsActive);
 
-  const renderAnimation = (param) => {
-    switch (animationName) {
+// Z_INDEX!!!
+
+  const renderAnimation = () => {
+    switch (entertainmentMode) {
       case 'fire':
         // console.log('FIRE'); // постоянный ререндер из-за счётчика
         return (
-          <Fire />
+          <Fire paused={!counterIsActive}/>
         )
       case 'forest':
         return (
-          <Forest />
+          <Forest paused={!counterIsActive}/>
         )
-      // case 'sea':
-      //   return (
-      //     <Sea />
-      //   )
-      // case 'rain':
-      //   return (
-      //     <Rain />
-      //   )
+      case 'sea':
+        return (
+          <Sea paused={!counterIsActive}/>
+        )
+      case 'rain':
+        return (
+          <Rain paused={!counterIsActive}/>
+        )
       // case 'newYear':
       //   return (
-      //     <NewYear />
+      //     <NewYear paused={!counterIsActive}/>
       //   )
       default:
         return (
