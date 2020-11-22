@@ -13,6 +13,7 @@ import Spinner from '../Spinner';
 import PersonalHistory from '../PersonalHistory';
 import { routes } from '../../utils/constants';
 import Audio from '../Audio/Audio';
+import Modals from '../Modals/Modals';
 
 import './App.scss';
 
@@ -39,6 +40,7 @@ const App = () =>  {
 
             <Spinner /> {/** component ??*/}
             <Audio />
+            <Modals />
 
           </div>
         </div>

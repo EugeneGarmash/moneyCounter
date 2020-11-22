@@ -26,4 +26,10 @@
 .Authentification__input:focus {
    outline: none;
    background-color: rgba(230, 224, 224, 0.7);
- }
+}
+
+@media (max-width: 767px) {
+  .Authentification {
+    width: 100%;
+  }
+}

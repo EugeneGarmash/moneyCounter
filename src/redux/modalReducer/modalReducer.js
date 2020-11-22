@@ -1,12 +1,17 @@
 export const OPEN_MODAL = 'OPEN_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
 export const AUTH_MODAL = 'AUTH_MODAL';
+export const MENU_MODAL = 'MENU_MODAL';
 
 const initialState = {
   [AUTH_MODAL]: {
     isOpen: false,
     data: {},
   },
+  [MENU_MODAL]: {
+    isOpen: false,
+    data: {}
+  }
 }
 
 export const openModal = (modalName, data) => {

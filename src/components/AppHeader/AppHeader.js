@@ -1,14 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { routes } from '../../utils/constants';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  // BrowserRouter,
-  // Switch,
-  // Route,
-  // Link,
-  NavLink
-} from "react-router-dom";
 
 import Authentification from '../Authentification/Authentification';
 import Modal from '../Modal';
@@ -18,8 +9,8 @@ import {
   AUTH_MODAL
 } from '../../redux/modalReducer/modalReducer';
 
-import extraClasses from '../CounterStep/Multipliers/Multipliers.module.scss';
-import buttonClasses from '../AppMainButton/AppMainButton.module.scss';
+import MenuToggleButton from './MenuToggleButton';
+
 import './AppHeader.scss';
 
 /** @info returns a react component
@@ -37,64 +28,37 @@ const StyledDisclaimer = styled.p`
 const StyledH1 = styled.h1`
   margin: 0;
 `
-const SalaryStep = () => {
-
-  const dispatch = useDispatch();
-  const authModalIsOpen = useSelector(s => s.modal[AUTH_MODAL].isOpen);
-
-  const handleOpenModal = () => {
-    dispatch(openModal(AUTH_MODAL));
-  }
-
-  const handleCloseAuthModal = () => {
-    dispatch(closeModal(AUTH_MODAL))
-  }
+const AppHeader = () => {
 
   return (
-    <header className="App__header">
-      <ul className={extraClasses.Multipliers}>
-        { Object.entries(routes).map(entry => (
-            <li key={entry[0]}>
-              <NavLink
-                className='App_meuLink'
-                to={entry[1]}
-              >
-                <button
-                  className={buttonClasses.AppMainButton}
-                >
-                {entry[0]}
-                </button>
-              </NavLink>
-              </li>
-        ))}
-        <li>
-          <button
-            onClick={handleOpenModal}
-            className={buttonClasses.AppMainButton}
-          >
-            Auth
-          </button>
-        </li>
-      </ul>
+    <header className="AppHeader">
 
-      <Modal
-        isOpen={authModalIsOpen}
-        onClose={handleCloseAuthModal}
-      >
-        <Authentification />
-      </Modal>
 
-      <StyledH1>Money counter</StyledH1>
-      <StyledDisclaimer margin='0'>
-        See how much your time cost
-      </StyledDisclaimer>
+      <div className='AppHeader__MenuToggleButtonContainer'>
+        <MenuToggleButton />
+      </div>
+
+      <div className=''>
+        <StyledH1>Money counter</StyledH1>
+        <StyledDisclaimer margin='0'>
+          See how much your time cost
+        </StyledDisclaimer>
+      </div>
       <style jsx>{`
-        .App__header {
-          {/* background-color: yellow; */}
+        .AppHeader {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+        }
+        .AppHeader__MenuToggleButtonContainer {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-right: 30px;
         }
       `}</style>
     </header>
   );
 }
 
-export default SalaryStep;
+export default AppHeader;

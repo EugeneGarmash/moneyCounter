@@ -29,7 +29,7 @@ body,
   color: #e6e0e0;
 }
 
-.App__header {
+.AppHeader {
   @include fl-col-jc(center);
   font-size: calc(10px + 2vmin);
   margin-bottom: 50px;

@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import classes from './Modal.module.scss';
+import cn from 'classnames';
 
 const Modal = props => {
 
@@ -28,19 +30,27 @@ const Modal = props => {
     }
 
     return (
-      // <div>
-        <div className={classes.Modal_overlay} onClick={handleClose}>
-          <button className={classes.Modal__closeButton} onClick={handleClose} />
-          <div className={classes.Modal} onClick={handleModalClick}>
-            {props.children}
-          </div>
+      <div className={classes.Modal_overlay} onClick={handleClose}>
+        <button className={classes.Modal__closeButton} onClick={handleClose} />
+        <div
+          onClick={handleModalClick}
+          className={cn(
+            classes.Modal, {
+            [classes.Modal_left_top]: props.topAndLeft,
+            [classes.Modal_fullHeight]: props.fullHeight
+          })}
+        >
+          {props.children}
         </div>
-      // </div>
+      </div>
     );
   }
 
   return props.isOpen
-    ? <ModalComponent {...{...props, children: props.children}} />
+    ? ReactDOM.createPortal(
+        <ModalComponent {...{...props, children: props.children}} />,
+        document.querySelector('.App')
+      )
     : null;
 }
 

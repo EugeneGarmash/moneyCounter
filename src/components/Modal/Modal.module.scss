@@ -27,3 +27,21 @@
   transform: translate(-50%, -50%);
 }
 
+@media (max-width: 767px) { // scss constants
+  .Modal {
+    width: 100%;
+  }
+}
+
+.Modal_left_top {
+  top: 0%;
+  left: 0%;
+}
+
+.Modal_fullHeight {
+  // height: 100%;
+  bottom: 0;
+  // height: 100%;
+  transform: translate(0%, 0%);
+}
+
