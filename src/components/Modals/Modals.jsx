@@ -5,9 +5,12 @@ import MenuModal from './MenuModal';
 
 
 const Modals = () => {
+
+  // render conditionally to prevent redundant rendering
+
   return (
     <Fragment>
-      <AuthentificationModal />
+      <AuthentificationModal /> 
       <MenuModal />
     </Fragment>
   )

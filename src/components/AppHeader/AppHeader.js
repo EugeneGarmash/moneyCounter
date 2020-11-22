@@ -32,8 +32,6 @@ const AppHeader = () => {
 
   return (
     <header className="AppHeader">
-
-
       <div className='AppHeader__MenuToggleButtonContainer'>
         <MenuToggleButton />
       </div>

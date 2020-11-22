@@ -15,13 +15,18 @@ import {
   // Link,
   NavLink
 } from "react-router-dom";
-
+import cn from 'classnames';
+import { useHistory, useLocation, useParams, useRouteMatch } from 'react-router-dom';
 import extraClasses from '../CounterStep/Multipliers/Multipliers.module.scss';
 import buttonClasses from '../AppMainButton/AppMainButton.module.scss';
+
+// USE PARAMS
 
 const MenuModal = () => {
 
   const dispatch = useDispatch();
+
+  const location = useLocation();
   const menuModalIsOpen = useSelector(s => s.modal[MENU_MODAL].isOpen);
 
   const handleCloseMenuModal = () => {
@@ -32,8 +37,8 @@ const MenuModal = () => {
     dispatch(openModal(AUTH_MODAL));
   }
 
-  const handleCloseAuthModal = () => {
-    dispatch(closeModal(AUTH_MODAL))
+  const handleMenuItemClick = () => {
+    dispatch(closeModal(MENU_MODAL));
   }
 
   return (
@@ -46,20 +51,26 @@ const MenuModal = () => {
 
       <div className='MenuModal'>
 
-        <ul className={extraClasses.Multipliers}>
+        <ul
+          className={cn(
+            `${extraClasses.Multipliers} MenuModal__menuList`, {
+          })}
+        >
           { Object.entries(routes).map(entry => (
-              <li key={entry[0]}>
+              <li
+                key={entry[0]}
+                className='MenuModal__menuLink'
+              >
                 <NavLink
-                  className='App_meuLink'
+                  className={buttonClasses.AppMainButton}
                   to={entry[1]}
+                  activeClassName={buttonClasses.AppMainButton_disabled}
+                  exact
+                  onClick={handleMenuItemClick}
                 >
-                  <button
-                    className={buttonClasses.AppMainButton}
-                  >
                   {entry[0]}
-                  </button>
                 </NavLink>
-                </li>
+              </li>
           ))}
           <li>
             <button
@@ -71,15 +82,25 @@ const MenuModal = () => {
           </li>
         </ul>
 
+        <p></p>
+
       </div>
       <style jsx>{`
         .MenuModal {
-          /* width: 600px; */
-          /* max-width: 100%; */
           width: 100%;
         }
-        @media (max-width: 767px) {
-          width:
+        @media (min-width: 767px) {
+          .MenuModal {
+            width: 650px;
+          }
+        }
+        .MenuModal__menuList {
+          display: flex;
+          flex-direction: column;
+        }
+        .MenuModal__menuLink {
+          margin-bottom: 25px;
+          color: #e6e0e0;
         }
       `}</style>
 

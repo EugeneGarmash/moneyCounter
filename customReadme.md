@@ -5,6 +5,37 @@ share with friends
 скидывать мелодию только при смене, паузе, стопе или мьюте
 sessionStorage
 
+
+
+
+
+
+
+
+
+  const shareViaWhatsApp = () => {
+    window.location.href = `whatsapp://send?text=${shareText}`;
+  };
+
+  const shareViaViber = () => {
+    window.location.href = `viber://forward?text=${shareText}`;
+  };
+
+  const shareViaTelegram = () => {
+    window.location.href = `https://t.me/share/url?url=${window.location.protocol}//${window.location.hostname}&text=${shareText}`;
+  };
+
+  const shareViaEmail = () => {
+    window.location.href = `mailto:?body=${shareText}`;
+  };
+
+
+
+
+
+
+  
+
 TODO FIRST
   React router
   Context

@@ -33,7 +33,6 @@ export const playAudio = () => (dispatch, getState) => {
 
 export const pauseAudio = () => (dispatch, getState) => {
   const audioInstance = getAudioInstance(getState);
-  console.log("pauseAudio -> audioInstance", audioInstance);
   audioInstance.pause();
 
   return dispatch({ // may alter the initial audioInstance
