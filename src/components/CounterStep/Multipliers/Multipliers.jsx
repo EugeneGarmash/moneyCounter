@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { setCounterSalaryStep } from '../../../redux/counterReducer/counterReducer';
 import classes from './Multipliers.module.scss';
-import buttonClasses from '../../AppMainButton/AppMainButton.module.scss';
+import Button from '../../Button/Button';
 import { incomeArray } from '../../../utils/constants';
 
 const Multipliers = () => {
@@ -19,12 +19,17 @@ const Multipliers = () => {
   return (
     <ul className={classes.Multipliers}>
       { incomeArray.map((incomeItem, index) =>
-          <button
+          <li
             key={incomeItem}
-            className={buttonClasses.AppMainButton}
-            onClick={increaseIncome(incomeItem, index)}
-            disabled={index === disabled}
-          >{incomeItem}x income</button>
+            className={classes.Multipliers__items}
+          >
+            <Button
+              onClick={increaseIncome(incomeItem, index)}
+              disabled={index === disabled}
+            >
+              {incomeItem}x income
+            </Button>
+          </li>
       )}
     </ul>
   )

@@ -1,61 +1,24 @@
-import React, {
-  useState,
-  useEffect,
-  useCallback,
-  useRef,
-} from 'react'
+import React from 'react'
 import classes from './CounterStep.module.scss';
 import {
   useSelector,
   useDispatch,
 } from 'react-redux';
 import getCorrectTimeName from '../../utils/getCorrectTimeName';
+/** @todo */
 // import AdditionalInfo from './AdditionalSalaryInfo';
 // import Multipliers from './Multipliers/Multipliers';
 import Animation from '../Animation/Animation';
 import { entertainmentMode } from '../../utils/constants';
 import { changeEntertainmentMode } from '../../redux/appReducer/appReducer';
 import multipliersClasses from '../CounterStep/Multipliers/Multipliers.module.scss';
-import buttonClasses from '../AppMainButton/AppMainButton.module.scss';
+import Button from '../Button/Button';
 
-const CounterStep = () => {
+const CounterStep = ({counterState}) => {
   const dispatch = useDispatch();
-  const timerId = useRef(null);
   const counterTimeStep = useSelector(state => state.counter.counterTimeStep);
   const counterSalaryStep = useSelector(state => state.counter.counterSalaryStep);
-  const counterIsActive = useSelector(state => state.counter.counterIsActive);
   const appEntertainmentMode = useSelector(s => s.app.entertainmentMode);
-
-  const [counterState, setCounterPassed] = useState({
-    secondsPassed: 0,
-    counterValue: 0,
-    paused: counterIsActive,
-  });
-
-  const startInterval = useCallback(
-    () => {
-      timerId.current = setInterval(
-        () => {
-          setCounterPassed(state =>
-            !counterIsActive
-              ? state
-              : {
-                  ...state,
-                counterValue: state.counterValue + counterSalaryStep,
-                secondsPassed: state.secondsPassed + counterTimeStep / 1000,
-              }
-          );
-        },
-        counterTimeStep
-      )
-    },
-    [counterIsActive, counterSalaryStep, counterTimeStep]
-  );
-
-  useEffect(() => {
-    startInterval();
-    return () => clearTimeout(timerId.current);
-  }, [startInterval]);
 
   return (
     <>
@@ -70,18 +33,21 @@ const CounterStep = () => {
         <p>You get ~{counterSalaryStep.toFixed(2)} items per {counterTimeStep / 1000} second(s)</p>
       </div>
       <Animation />
-      <ul className={multipliersClasses.Multipliers}>
+      <ul className={classes.CounterStep__entertainmentModes}>
         {Object.entries(entertainmentMode).map(entry => {
           const name = entry[0];
-          return ( // <li></li>
-            <button
+          return (
+            <li
               key={name}
-              className={buttonClasses.AppMainButton}
-              onClick={() => dispatch(changeEntertainmentMode(entry))}
-              disabled={name === appEntertainmentMode} // disabled ??
+              className={classes.CounterStep__entertainmentItem}
             >
-              {name}
-            </button>
+              <Button
+                onClick={() => dispatch(changeEntertainmentMode(entry))}
+                disabled={name === appEntertainmentMode} /** @todo */
+              >
+                {name}
+              </Button>
+            </li>
           )
         })}
       </ul>

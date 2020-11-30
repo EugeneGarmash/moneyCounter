@@ -1,3 +1,4 @@
+@import '../../services/mixins.scss';
 
 .CounterStep {
   font-size: calc(10px + 5vmin);
@@ -10,4 +11,15 @@
 
 .mainInfoContainer {
   margin-bottom: 35px;
+}
+
+.CounterStep__entertainmentModes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  @include fl-jc(space-between);
+}
+
+.CounterStep__entertainmentItem {
+  flex-grow: 1;
 }

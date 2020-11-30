@@ -17,6 +17,7 @@ import {
 } from "react-router-dom";
 import cn from 'classnames';
 import { useHistory, useLocation, useParams, useRouteMatch } from 'react-router-dom';
+import Button from '../Button/Button';
 import extraClasses from '../CounterStep/Multipliers/Multipliers.module.scss';
 import buttonClasses from '../AppMainButton/AppMainButton.module.scss';
 
@@ -73,12 +74,12 @@ const MenuModal = () => {
               </li>
           ))}
           <li>
-            <button
+            <Button
               onClick={handleOpenModal}
               className={buttonClasses.AppMainButton}
             >
               Auth
-            </button>
+            </Button>
           </li>
         </ul>
 

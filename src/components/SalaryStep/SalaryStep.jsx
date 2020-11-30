@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import propTypes from 'prop-types';
 import Radium from 'radium';
@@ -6,20 +6,16 @@ import { connect } from 'react-redux';
 
 import { setSalaryValue } from '../../redux/salaryReducer/salaryActionCreators';
 import { logout } from '../../redux/authReducer/authActionCreators';
-import { getPersonalData } from '../../redux/authReducer/authActionCreators';
 import { setCounterSalaryStep } from '../../redux/counterReducer/counterReducer';
 import { toggleAppState } from '../../redux/appReducer/appReducer';
 import { initializeACounter } from '../../redux/counterReducer/counterReducer';
-import Authentification from '../Authentification/Authentification';
-import Modal from '../Modal';
 import {
-  openModal,
-  closeModal,
   AUTH_MODAL
 } from '../../redux/modalReducer/modalReducer';
 
 import buttonClasses from '../AppMainButton/AppMainButton.module.scss';
 import './SalaryStep.scss';
+import Button from '../Button/Button';
 
 const salaryInputStyles = {
   padding: '10px',
@@ -80,19 +76,19 @@ const SalaryStep = props => {
         { isLoggedIn
             ? <div>
               <div className='SalaryStep__buttonContainer'>
-                <button
+                <Button
                   onClick={handleLogout}
                   className={buttonClasses.AppMainButton}
                 >
                   Logout
-                </button>
+                </Button>
               </div>
-                <button
+                <Button
                   onClick={handleLogout}
                   className={buttonClasses.AppMainButton}
                 >
                   Personal Cabinet
-                </button>
+                </Button>
               </div>
             : null
 

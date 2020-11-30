@@ -13,6 +13,7 @@ const PersonalHistory = () => {
   const localId = useSelector(s => s.auth.success.localId);
 
   useEffect(() => {
+    /** @todo */
     // if (userIsAuthentificated && localId) {
       // dispatch(getSalaries(userIsAuthentificated));
     // }

@@ -1,14 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import Authentification from '../Authentification/Authentification';
-import Modal from '../Modal';
-import {
-  openModal,
-  closeModal,
-  AUTH_MODAL
-} from '../../redux/modalReducer/modalReducer';
-
 import MenuToggleButton from './MenuToggleButton';
 
 import './AppHeader.scss';

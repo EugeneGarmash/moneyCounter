@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 
 import { toggleAppState } from '../../redux/appReducer/appReducer';
@@ -12,16 +12,7 @@ import {
 import classes from './AppMainButton.module.scss';
 import { pauseAudio, playAudio } from '../../redux/audioReducer/audioReducer';
 
-export const Button = (props) => {
-  return (
-    <button
-      className={`${props.classNames}`}
-      onClick={props.onClick}
-    >
-      {props.textContent}
-    </button>
-  )
-};
+import Button from '../Button/Button';
 
 const AppMainButton = props => {
 
@@ -61,10 +52,8 @@ const AppMainButton = props => {
   }
 
   const handleStop = () => {
-    toggleAppState(); // handle this case
+    toggleAppState();
   }
-
-
 
   return (
     appIsInSalaryStep

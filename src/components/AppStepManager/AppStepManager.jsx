@@ -4,8 +4,7 @@ import SalaryStep from '../SalaryStep/';
 import CounterStep from '../CounterStep';
 import './AppStepManager.scss';
 
-const AppStepManager = () => {
-
+const AppStepManager = props => {
   const appIsInSalaryStep = useSelector(state => state.app.appIsInSalaryStep);
 
   return (
@@ -13,7 +12,7 @@ const AppStepManager = () => {
     {
       appIsInSalaryStep
         ? <SalaryStep />
-        : <CounterStep />
+        : <CounterStep counterState={props.counterState}/>
     }
   </main>
   );

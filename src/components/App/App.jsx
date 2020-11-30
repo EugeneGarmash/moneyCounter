@@ -1,4 +1,11 @@
-import React, { Suspense, useEffect } from 'react';
+import React, {
+  Suspense,
+  useEffect,
+  useState,
+} from 'react';
+import {
+  useSelector,
+} from 'react-redux';
 import { StyleRoot } from 'radium';
 import {
   BrowserRouter,
@@ -13,40 +20,25 @@ import Spinner from '../Spinner';
 import { routes } from '../../utils/constants';
 import Audio from '../Audio/Audio';
 import Modals from '../Modals/Modals';
-import './App.scss';
+import handleActiveTabClose from '../../utils/handleActiveTabClose';
+import Counter from '../Counter/Counter';
 
+import './App.scss';
 const PersonalHistory = React.lazy(() => import('../PersonalHistory'));
-// import PersonalHistory from '../PersonalHistory';
 
 
 const App = () =>  {
 
-  // MOVE TO A SEPARATE COMPONENT
+  const counterIsActive = useSelector(state => state.counter.counterIsActive);
+
+  const [counterState, setCounterPassed] = useState({
+    secondsPassed: 0,
+    counterValue: 0,
+    paused: counterIsActive,
+  });
 
   useEffect(() => {
-
-    window.onbeforeunload = function (e) {
-      e.preventDefault(); // Cancel the event
-      e.returnValue = 'Really want to quit the game?'; // Chrome requires returnValue to be set
-    };
-
-    // Prevent Ctrl+S (and Ctrl+W for old browsers and Edge)
-    document.onkeydown = function (e) {
-      e = e || window.event;//Get event
-      if (!e.ctrlKey) return;
-      var code = e.which || e.keyCode; //Get key code
-
-      switch (code) {
-          case 83://Block Ctrl+S
-          case 87://Block Ctrl+W -- Not work in Chrome and new Firefox
-            e.preventDefault();
-            e.stopPropagation();
-            break;
-          default:
-            break;
-      }
-    };
-
+    handleActiveTabClose();
   }, []);
 
   return (
@@ -56,25 +48,33 @@ const App = () =>  {
           <div className='container'>
             <AppHeader />
 
+
             <Switch>
               <Route path={routes.info}>
                 <p>I am Eugene Garmash and I am a web developer</p>
               </Route>
               <Route path={routes.personal}>
-                <Suspense fallback={<div>Загрузка...</div>}>
+                <Suspense fallback={<div>LOADING...</div>}>
                   <PersonalHistory />
                 </Suspense>
               </Route>
               <Route path={routes.main}>
-                <AppStepManager />
+                <AppStepManager counterState={counterState}/>
                 <AppFooter />
               </Route>
             </Switch>
 
-            {/* <Counter />  */}
-            <Spinner /> {/** component ??*/}
+
+            {/** helpers */}
+
+            <Counter
+              counterIsActive={counterIsActive}
+              setCounterPassed={setCounterPassed}
+            />
+            <Spinner />
             <Audio />
             <Modals />
+
 
           </div>
         </div>
