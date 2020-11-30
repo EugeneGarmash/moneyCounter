@@ -1,21 +1,6 @@
-ROUTER + COURSE 
+TODOS
 
-share with friends
-
-скидывать мелодию только при смене, паузе, стопе или мьюте
-sessionStorage
-
-
-
-React.lazy()
-Suspense
-
-
-https://eugenegarmash.github.io/moneyCounter/
-
-  "homepage": "https://eugenegarmash.github.io/moneyCounter/",
-
-
+1) share with friends buttons
   const shareViaWhatsApp = () => {
     window.location.href = `whatsapp://send?text=${shareText}`;
   };
@@ -32,39 +17,31 @@ https://eugenegarmash.github.io/moneyCounter/
     window.location.href = `mailto:?body=${shareText}`;
   };
 
+2) Context
 
-
-
-
-
-  
-
-TODO FIRST
-  React router
-  Context
+3)
   Redux toolkit - slices
   Reselect
-  Debounce
-  Reduck
-  Modal with text info
-  Add my creds
-  shouldComponentUpdate / pure / memo // useMemo vs shouldComponentUpdate
+
+4) Debounce
   обрабатывать большие гривны
     - https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
     - https://www.google.com/search?q=format+number+js&oq=format+Number+js&aqs=chrome.0.0l8.5013j0j7&sourceid=chrome&ie=UTF-8
-TODO NEXT
-  SCSS variables
-  Write some tests
-  add component to CounterStep
-LATER
-  SWR
-  Remove className duplication
-    https://www.google.com/search?q=css+modules+name+duplication&oq=css+modules+name+du&aqs=chrome.1.69i57j33i22i29i30.6513j0j7&sourceid=chrome&ie=UTF-8
-    /** @todo to avoid AppMainButton__AppMainButton you should play with webpack config file*/
-    using linter with custom settings
-  // https://eugene-s-project-72ed7.firebaseio.com/ // получаю набор стандартныз профессий
 
-RECAPTCHA??
+5) profile page - useHistory, useParams, useRouteMatch
+
+6) Multipliers
+
+7)
+Remove className duplication
+https://www.google.com/search?q=css+modules+name+duplication&oq=css+modules+name+du&aqs=chrome.1.69i57j33i22i29i30.6513j0j7&sourceid=chrome&ie=UTF-8
+to avoid AppMainButton__AppMainButton you should play with webpack config file*/
+using linter with custom settings
+
+6) SWR
+
+7) other project todos
+
 
 
 You see a money counter written on JS programming

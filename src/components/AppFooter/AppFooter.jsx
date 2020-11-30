@@ -4,12 +4,12 @@ import AppMainButton from '../AppMainButton';
 
 import './AppFooter.scss';
 
-const AppFooter = () => {
+const AppFooter = props => {
 
   return (
     <div className='AppFooter'>
       <div className='AppFooter__primaryButtonContainer'>
-        <AppMainButton />
+        <AppMainButton setCounterPassed={props.setCounterPassed}/>
       </div>
     </div>
   )

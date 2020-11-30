@@ -11,7 +11,6 @@ import getCorrectTimeName from '../../utils/getCorrectTimeName';
 import Animation from '../Animation/Animation';
 import { entertainmentMode } from '../../utils/constants';
 import { changeEntertainmentMode } from '../../redux/appReducer/appReducer';
-import multipliersClasses from '../CounterStep/Multipliers/Multipliers.module.scss';
 import Button from '../Button/Button';
 
 const CounterStep = ({counterState}) => {
@@ -43,7 +42,7 @@ const CounterStep = ({counterState}) => {
             >
               <Button
                 onClick={() => dispatch(changeEntertainmentMode(entry))}
-                disabled={name === appEntertainmentMode} /** @todo */
+                disabled={name === appEntertainmentMode}
               >
                 {name}
               </Button>

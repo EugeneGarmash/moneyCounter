@@ -53,6 +53,11 @@ const AppMainButton = props => {
 
   const handleStop = () => {
     toggleAppState();
+    props.setCounterPassed({
+      secondsPassed: 0,
+      counterValue: 0,
+      paused: true,
+    })
   }
 
   return (

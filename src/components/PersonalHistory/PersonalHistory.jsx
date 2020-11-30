@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getSalaries } from '../../redux/authReducer/authActionCreators';
+// import { getSalaries } from '../../redux/authReducer/authActionCreators';
 import { AUTH_MODAL, openModal } from '../../redux/modalReducer/modalReducer';
 import './PersonalHistory.scss'
 import cn from 'classnames';
@@ -13,7 +13,7 @@ const PersonalHistory = () => {
   const localId = useSelector(s => s.auth.success.localId);
 
   useEffect(() => {
-    /** @todo */
+    /** @todo  - todo #6 */
     // if (userIsAuthentificated && localId) {
       // dispatch(getSalaries(userIsAuthentificated));
     // }

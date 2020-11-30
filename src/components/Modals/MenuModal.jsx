@@ -8,26 +8,17 @@ import {
 } from '../../redux/modalReducer/modalReducer';
 import Modal from '../Modal';
 import { routes } from '../../utils/constants';
-import {
-  // BrowserRouter,
-  // Switch,
-  // Route,
-  // Link,
-  NavLink
-} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import cn from 'classnames';
-import { useHistory, useLocation, useParams, useRouteMatch } from 'react-router-dom';
 import Button from '../Button/Button';
 import extraClasses from '../CounterStep/Multipliers/Multipliers.module.scss';
-import buttonClasses from '../AppMainButton/AppMainButton.module.scss';
+import buttonClasses from '../Button/Button.module.scss';
 
 // USE PARAMS
 
 const MenuModal = () => {
 
   const dispatch = useDispatch();
-
-  const location = useLocation();
   const menuModalIsOpen = useSelector(s => s.modal[MENU_MODAL].isOpen);
 
   const handleCloseMenuModal = () => {
@@ -63,9 +54,9 @@ const MenuModal = () => {
                 className='MenuModal__menuLink'
               >
                 <NavLink
-                  className={buttonClasses.AppMainButton}
+                  className={buttonClasses.Button}
                   to={entry[1]}
-                  activeClassName={buttonClasses.AppMainButton_disabled}
+                  activeClassName={buttonClasses.Button_disabled}
                   exact
                   onClick={handleMenuItemClick}
                 >
@@ -76,7 +67,6 @@ const MenuModal = () => {
           <li>
             <Button
               onClick={handleOpenModal}
-              className={buttonClasses.AppMainButton}
             >
               Auth
             </Button>

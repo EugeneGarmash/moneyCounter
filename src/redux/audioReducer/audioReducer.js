@@ -3,6 +3,7 @@ import bonfireWav from '../../static/bonfire.wav';
 const CREATE_AUDIO = 'CREATE_AUDIO';
 const PAUSE_AUDIO = 'PAUSE_AUDIO';
 const PLAY_AUDIO = 'PLAY_AUDIO';
+const STOP_AUDIO = 'STOP_AUDIO';
 const HANDLE_VOLUME = 'HANDLE_VOLUME';
 const CHANGE_SOURCE = 'CHANGE_SOURCE';
 
@@ -41,15 +42,14 @@ export const pauseAudio = () => (dispatch, getState) => {
   });
 };
 
-// export const pauseAudio = () => (dispatch, getState) => {
-//   const audioInstance = getAudioInstance(getState);
-//   audioInstance.pause();
-
-//   return dispatch({ // may alter the initial audioInstance
-//     type: PAUSE_AUDIO,
-//     payload: audioInstance, // same object ? better be so
-//   });
-// };
+export const stopAudio = () => (dispatch, getState) => {
+  const audioInstance = getAudioInstance(getState);
+  audioInstance.pause();
+  return dispatch({ // may alter the initial audioInstance
+    type: STOP_AUDIO,
+    payload: audioInstance, // same object ? better be so
+  });
+}
 
 export const changeSource = src => (dispatch, getState) => {
   const audioInstance = getAudioInstance(getState);
@@ -62,6 +62,9 @@ export const changeSource = src => (dispatch, getState) => {
 
 export const handleVolume = volumeLevel => (dispatch, getState) => {
   const audioInstance = getAudioInstance(getState)
+  if(!audioInstance) {
+    return;
+  }
   audioInstance.volume = volumeLevel;
   return dispatch({
     type: HANDLE_VOLUME,
@@ -106,12 +109,20 @@ const audioReducer = (state = initialState, action) => {
         audioInstance: action.payload,
       }
 
+    case STOP_AUDIO: {
+      return {
+        ...state,
+        audioInstance: null,
+      }
+    }
+
     case CHANGE_SOURCE: {
       return {
         ...state,
         audioInstance: action.payload,
       }
     }
+
 
     case HANDLE_VOLUME:
       return {

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import MenuToggleButton from './MenuToggleButton';
 
 import './AppHeader.scss';
+import MuteButton from '../Button/MuteButton';
 
 /** @info returns a react component
  * to modify styles use `props => condition ? a : b ` in template literals
@@ -33,6 +34,11 @@ const AppHeader = () => {
           See how much your time cost
         </StyledDisclaimer>
       </div>
+
+      <div className='AppHeader__muteButtonContainer'>
+        <MuteButton />
+      </div>
+
       <style jsx>{`
         .AppHeader {
           display: flex;

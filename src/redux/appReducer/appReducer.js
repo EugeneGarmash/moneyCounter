@@ -1,5 +1,4 @@
-import { changeTrack, launchAnAudio, pauseAudio } from "../audioReducer/audioReducer";
-import { toggleCounterState } from '../counterReducer/counterReducer';
+import { changeTrack, launchAnAudio, pauseAudio, stopAudio } from "../audioReducer/audioReducer";
 
 const TOGGLE_APP_STATE = 'TOGGLE_APP_STATE';
 const TOGGLE_APP_SPINNER = 'TOGGLE_APP_SPINNER';
@@ -10,9 +9,17 @@ const initialState = {
   entertainmentMode: '',
 }
 
-export const toggleAppState = () => ({
-  type: TOGGLE_APP_STATE,
-});
+export const toggleAppState = () => (dispatch, getState) => {
+
+  if (!getState().app.appIsInSalaryStep) {
+    dispatch(changeEntertainmentMode(''));
+    dispatch(stopAudio());
+  }
+
+  return dispatch({
+    type: TOGGLE_APP_STATE,
+  });
+};
 
 export const toggleAppSpinner = () => ({
   type: TOGGLE_APP_SPINNER,
