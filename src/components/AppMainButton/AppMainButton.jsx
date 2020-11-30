@@ -30,17 +30,17 @@ const AppMainButton = props => {
 
   const handleCounterStepButtonClick = async (e) => {
     if (salaryValue) {
-      e.preventDefault();
-      window.grecaptcha.ready(function() {
-        window.grecaptcha.execute('6LeT0OEZAAAAACWNvEOTwKHTF4L6vawvPVYQI8QS', {action: 'submit'})
-          .then(function(token) {
+      // e.preventDefault();
+      // window.grecaptcha.ready(function() {
+      //   window.grecaptcha.execute('6LeT0OEZAAAAACWNvEOTwKHTF4L6vawvPVYQI8QS', {action: 'submit'})
+      //     .then(function(token) {
 
             initializeACounter();
 
           }
-        );
-      });
-    }
+    //     );
+    //   });
+    // }
   }
 
   const handlePause = () => {

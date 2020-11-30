@@ -12,6 +12,7 @@ import Animation from '../Animation/Animation';
 import { entertainmentMode } from '../../utils/constants';
 import { changeEntertainmentMode } from '../../redux/appReducer/appReducer';
 import Button from '../Button/Button';
+console.log("🚀 ~ file: CounterStep.jsx ~ line 13 ~ entertainmentMode", entertainmentMode);
 
 const CounterStep = ({counterState}) => {
   const dispatch = useDispatch();

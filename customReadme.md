@@ -1,5 +1,7 @@
 TODOS
 
+0) fix custiim url for github pages
+
 1) share with friends buttons
   const shareViaWhatsApp = () => {
     window.location.href = `whatsapp://send?text=${shareText}`;
