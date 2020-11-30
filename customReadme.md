@@ -7,10 +7,13 @@ sessionStorage
 
 
 
+React.lazy()
+Suspense
 
 
+https://eugenegarmash.github.io/moneyCounter/
 
-
+  "homepage": "https://eugenegarmash.github.io/moneyCounter/",
 
 
   const shareViaWhatsApp = () => {
