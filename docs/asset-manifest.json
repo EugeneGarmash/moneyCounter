@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/moneyCounter/static/css/main.3196cb2f.chunk.css",
+    "main.js": "/moneyCounter/static/js/main.74bd1a1a.chunk.js",
+    "main.js.map": "/moneyCounter/static/js/main.74bd1a1a.chunk.js.map",
+    "runtime-main.js": "/moneyCounter/static/js/runtime-main.c80b1505.js",
+    "runtime-main.js.map": "/moneyCounter/static/js/runtime-main.c80b1505.js.map",
+    "static/js/2.53bfecb1.chunk.js": "/moneyCounter/static/js/2.53bfecb1.chunk.js",
+    "static/js/2.53bfecb1.chunk.js.map": "/moneyCounter/static/js/2.53bfecb1.chunk.js.map",
+    "static/css/3.be14fdd7.chunk.css": "/moneyCounter/static/css/3.be14fdd7.chunk.css",
+    "static/js/3.ef28b776.chunk.js": "/moneyCounter/static/js/3.ef28b776.chunk.js",
+    "static/js/3.ef28b776.chunk.js.map": "/moneyCounter/static/js/3.ef28b776.chunk.js.map",
+    "index.html": "/moneyCounter/index.html",
+    "precache-manifest.c3a2b3857e5e034d0bb15040f035801f.js": "/moneyCounter/precache-manifest.c3a2b3857e5e034d0bb15040f035801f.js",
+    "service-worker.js": "/moneyCounter/service-worker.js",
+    "static/css/3.be14fdd7.chunk.css.map": "/moneyCounter/static/css/3.be14fdd7.chunk.css.map",
+    "static/css/main.3196cb2f.chunk.css.map": "/moneyCounter/static/css/main.3196cb2f.chunk.css.map",
+    "static/js/2.53bfecb1.chunk.js.LICENSE.txt": "/moneyCounter/static/js/2.53bfecb1.chunk.js.LICENSE.txt",
+    "static/media/bonfire.wav": "/moneyCounter/static/media/bonfire.b82c0c68.wav",
+    "static/media/forest.wav": "/moneyCounter/static/media/forest.76d2708c.wav",
+    "static/media/rain.wav": "/moneyCounter/static/media/rain.d96b481d.wav",
+    "static/media/sea.wav": "/moneyCounter/static/media/sea.798420bb.wav"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c80b1505.js",
+    "static/js/2.53bfecb1.chunk.js",
+    "static/css/main.3196cb2f.chunk.css",
+    "static/js/main.74bd1a1a.chunk.js"
+  ]
+}
