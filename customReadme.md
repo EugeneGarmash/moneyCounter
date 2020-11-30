@@ -30,7 +30,7 @@ TODOS
 
 5) profile page - useHistory, useParams, useRouteMatch
 
-6) Multipliers
+6) Multipliers (change income ,ay be redundant)
 
 7)
 Remove className duplication
@@ -41,6 +41,10 @@ using linter with custom settings
 6) SWR
 
 7) other project todos
+
+8) styling
+
+0) refactor COUNTER - make it simpler - refactor app state to something more precise
 
 
 
