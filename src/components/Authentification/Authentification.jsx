@@ -51,7 +51,7 @@ const Authentification = () => {
     <div className={classes.Authentification}>
       <div className={classes.Authentification__formAndButtonContainer}>
         {error && <p>{error}</p>}
-        <form className={classes.Authentification__formContainer} onSubmit={handleSubmitAuthentificationData}>
+        <div className={classes.Authentification__formContainer} >
           <input type='text' className={classes.Authentification__input} placeholder='email' value={state.email} onChange={handleChange('email')}/>
           <input type='password' className={classes.Authentification__input} placeholder='password' value={state.password} onChange={handleChange('password')}/>
           <Button
@@ -60,7 +60,7 @@ const Authentification = () => {
           >
             { appIsInSignUpMode ? 'Create an account' : 'Sign in' }
           </Button>
-        </form>
+        </div>
       </div>
       <div className={classes.Authentification__buttonContainer}>
         <Button
@@ -73,12 +73,11 @@ const Authentification = () => {
       <Button
         className={buttonClasses.AppMainButton}
         onClick={handleClose}
-        textContent
-      >
-        Proceed incognito {/** even when we're logged in !! - fix this */}
-        {/** Add logout button */}
-        {/** use <Redirect component */}
-      </Button>
+        textContent='Proceed incognito'
+        /** even when we're logged in !! - fix this */
+        /** Add logout button */
+        /** use <Redirect component */
+      />
     </div>
   );
 }

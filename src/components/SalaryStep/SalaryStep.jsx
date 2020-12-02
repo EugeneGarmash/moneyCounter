@@ -43,15 +43,15 @@ const salaryInputStyles = {
 const SalaryStep = props => {
 
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(s => s.auth.success.idToken);
-  const userIsAuthentificated = useSelector(s => s.auth.success.idToken);
+  const isLoggedIn = useSelector(s => s.auth.success.token);
+  // const userIsAuthentificated = useSelector(s => s.auth.success.token);
 
   const handleSalaryInputChange = event => {
     props.setSalaryValue(event.target.value);
   }
   const handlePressEnter = (event) => {
     if (event.key === 'Enter' && props.salaryValue) {
-      props.initializeACounter(userIsAuthentificated);
+      props.initializeACounter(isLoggedIn);
     }
   }
 
@@ -73,7 +73,7 @@ const SalaryStep = props => {
       <span className='SalaryStep__bottomText'>units per month</span>
       <br />
       <div className='SalaryStep__testBlock'>
-        { isLoggedIn
+        {/* { isLoggedIn
             ? <div>
               <div className='SalaryStep__buttonContainer'>
                 <Button
@@ -92,7 +92,7 @@ const SalaryStep = props => {
               </div>
             : null
 
-        }
+        } */}
       </div>
     </div>
   );

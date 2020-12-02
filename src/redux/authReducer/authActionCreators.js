@@ -12,6 +12,7 @@ import {
 } from './authActionTypes';
 import { toggleAppSpinner } from '../appReducer/appReducer';
 import { closeModal, AUTH_MODAL } from '../modalReducer/modalReducer';
+import {saveUserToStorage} from '../../utils/saveUserToStorage';
 
 
 const key = 'AIzaSyA9xEWlTDvAfOlaBojNIUvUS9zTctNfnUk'
@@ -23,17 +24,17 @@ export const setPersonalData = payload => {
   }
 }
 
-export const getSalaries = token => (dispatch, getState) => {
-  const userId = getState().auth.success.localId;
-  if (!userId) {
-    return;
-  }
-  testaxios.get(`/salaries/${userId}.json`)
-      .then(response => {
-          // console.log("getPersonalData -> response", response.data);
-          return dispatch(setPersonalData(response.data));
-      });
-}
+// export const getSalaries = token => (dispatch, getState) => {
+//   const userId = getState().auth.success.localId; // !!!
+//   if (!userId) {
+//     return;
+//   }
+//   testaxios.get(`/salaries/${userId}.json`)
+//       .then(response => {
+//           // console.log("getPersonalData -> response", response.data);
+//           return dispatch(setPersonalData(response.data));
+//       });
+// }
 
 export const setAuthFetching = () => ({
   type: AUTH_FETCHING,
@@ -49,9 +50,34 @@ export const setAuthError = payload => ({
   payload,
 });
 
-export const logout = () => ({
-  type: AUTH_LOGOUT,
-});
+export const logout = () => {
+  localStorage.removeItem('userData')
+  return {
+    type: AUTH_LOGOUT,
+  }
+};
+
+export const getNewToken = () => {
+  // success.
+}
+
+export const checkUserAuth = () => dispatch => {
+  const userData = JSON.parse(localStorage.getItem('userData'));
+  console.log("-------->", userData);
+  if (!userData || !userData.token || !userData.expirationDate) {
+    dispatch(logout());
+  } else {
+    console.log('hey');
+    const expirationDate = new Date(userData.expirationDate);
+    if ( expirationDate > new Date()) {
+      dispatch(setAuthSuccess(userData)); // structure!
+    } else {
+      // get new token!
+      // dispatch(logout());
+    }
+  }
+  // return 
+}
 
 export const checkAuthTimeout = expirationTime => (dispatch) => {
   setTimeout(() => {
@@ -59,11 +85,11 @@ export const checkAuthTimeout = expirationTime => (dispatch) => {
   }, expirationTime * 1000)
 }
 
-export const postPersonalData = (mode, data) => dispatch => {
+export const postPersonalData = (mode, userData) => dispatch => {
   const modeIsSignUp = mode === 'signup';
   const authData = {
-    email: data.email,
-    password: data.password,
+    email: userData.email,
+    password: userData.password,
     returnSecureToken: true,
   }
 
@@ -75,10 +101,18 @@ export const postPersonalData = (mode, data) => dispatch => {
 
   axios.post(baseURL, authData)
     .then(response => {
-      dispatch(setAuthSuccess(response.data))
-      dispatch(checkAuthTimeout(response.data.expiresIn));
+      const {
+        idToken,
+        expiresIn,
+        email,
+      } = response.data;
+
+      dispatch(setAuthSuccess({ idToken, email, }))
+      // dispatch(checkAuthTimeout(expiresIn));
       dispatch(toggleAppSpinner());
       dispatch(closeModal(AUTH_MODAL));
+      const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+      saveUserToStorage({token: response.data.idToken, expirationDate});
     })
     .catch(error => {
       dispatch(setAuthError(error.response.data.error));

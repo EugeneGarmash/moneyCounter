@@ -58,6 +58,7 @@ const AppMainButton = props => {
       counterValue: 0,
       paused: true,
     })
+    // saveUserSalary
   }
 
   return (

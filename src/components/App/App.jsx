@@ -4,6 +4,7 @@ import React, {
   useState,
 } from 'react';
 import {
+  useDispatch,
   useSelector,
 } from 'react-redux';
 import { StyleRoot } from 'radium';
@@ -21,14 +22,20 @@ import Audio from '../Audio/Audio';
 import Modals from '../Modals/Modals';
 // import handleActiveTabClose from '../../utils/handleActiveTabClose';
 import Counter from '../Counter/Counter';
+import { checkUserAuth } from '../../redux/authReducer/authActionCreators';
 
 import './App.scss';
 const AppFooter = React.lazy(() => import('../AppFooter'));
 const PersonalHistory = React.lazy(() => import('../PersonalHistory'));
 
 
+// сохранять зарплату, если вошёл в аккаунт:
+// сохранять зарплату по стопу
+// сохранять зарплату, когда выхожу с приложения
+
 const App = () =>  {
 
+  const dispatch = useDispatch();
   const counterIsActive = useSelector(state => state.counter.counterIsActive);
 
   /**
@@ -44,6 +51,9 @@ const App = () =>  {
 
   useEffect(() => {
     // handleActiveTabClose(); /** @info should be active - but only if counter is active */
+
+    dispatch(checkUserAuth());
+
   }, []);
 
   return (
