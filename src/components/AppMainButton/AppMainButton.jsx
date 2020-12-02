@@ -8,6 +8,7 @@ import {
   initializeACounter,
   toggleCounterState
 } from '../../redux/counterReducer/counterReducer';
+import { saveUserSalary } from '../../redux/authReducer/authActionCreators';
 
 import classes from './AppMainButton.module.scss';
 import { pauseAudio, playAudio } from '../../redux/audioReducer/audioReducer';
@@ -17,6 +18,7 @@ import Button from '../Button/Button';
 const AppMainButton = props => {
 
   const {
+    counterState,
     appIsInSalaryStep,
     counterIsActive,
     toggleAppState,
@@ -58,7 +60,11 @@ const AppMainButton = props => {
       counterValue: 0,
       paused: true,
     })
-    // saveUserSalary
+    props.onSaveUserSalary({
+      salaryValue,
+      secondsPassed: counterState.secondsPassed,
+      counterValue: counterState.counterValue,
+    })
   }
 
   return (
@@ -111,4 +117,5 @@ export default connect(
     initializeACounter,
     onPauseAudio: pauseAudio,
     onPlayAudio: playAudio,
+    onSaveUserSalary: saveUserSalary,
 })(AppMainButton);

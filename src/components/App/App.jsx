@@ -76,7 +76,10 @@ const App = () =>  {
               <Route path={routes.main}>
                 <AppStepManager counterState={counterState}/>
                 <Suspense fallback={null}>
-                  <AppFooter setCounterPassed={setCounterPassed}/>
+                  <AppFooter
+                    setCounterPassed={setCounterPassed}
+                    counterState={counterState}
+                  />
                 </Suspense>
               </Route>
             </Switch>
