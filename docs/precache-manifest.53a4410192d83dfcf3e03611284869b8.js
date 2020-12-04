@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7c35649e5f5b5fb90603429a563711ed",
+    "revision": "fa45211d78697fccd1a6e434d7025a2b",
     "url": "/moneyCounter/index.html"
   },
   {
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/moneyCounter/static/css/5.be14fdd7.chunk.css"
   },
   {
-    "revision": "092041976d7e77df991d",
+    "revision": "64397a07163d3381e0ee",
     "url": "/moneyCounter/static/css/main.968f3a62.chunk.css"
   },
   {
@@ -40,8 +40,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/moneyCounter/static/js/5.31e42aa6.chunk.js"
   },
   {
-    "revision": "092041976d7e77df991d",
-    "url": "/moneyCounter/static/js/main.eb45ce21.chunk.js"
+    "revision": "64397a07163d3381e0ee",
+    "url": "/moneyCounter/static/js/main.bea05913.chunk.js"
   },
   {
     "revision": "6cc007f6ee220f373ceb",

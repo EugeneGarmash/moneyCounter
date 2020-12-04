@@ -63,7 +63,7 @@ const App = () =>  {
   }, []);
 
   return (
-    <BrowserRouter basename={process.env.NODE_ENV !== 'development' ? 'development' : ''}>
+    <BrowserRouter basename={process.env.NODE_ENV !== 'development' ? 'moneyCounter' : ''}>
       <StyleRoot>
         <div className="App">
           <div className='container'>

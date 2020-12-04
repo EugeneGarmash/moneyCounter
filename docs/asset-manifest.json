@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/moneyCounter/static/css/main.968f3a62.chunk.css",
-    "main.js": "/moneyCounter/static/js/main.eb45ce21.chunk.js",
-    "main.js.map": "/moneyCounter/static/js/main.eb45ce21.chunk.js.map",
+    "main.js": "/moneyCounter/static/js/main.bea05913.chunk.js",
+    "main.js.map": "/moneyCounter/static/js/main.bea05913.chunk.js.map",
     "runtime-main.js": "/moneyCounter/static/js/runtime-main.5d6f2bf2.js",
     "runtime-main.js.map": "/moneyCounter/static/js/runtime-main.5d6f2bf2.js.map",
     "static/js/2.ae6ab593.chunk.js": "/moneyCounter/static/js/2.ae6ab593.chunk.js",
@@ -17,7 +17,7 @@
     "static/js/5.31e42aa6.chunk.js": "/moneyCounter/static/js/5.31e42aa6.chunk.js",
     "static/js/5.31e42aa6.chunk.js.map": "/moneyCounter/static/js/5.31e42aa6.chunk.js.map",
     "index.html": "/moneyCounter/index.html",
-    "precache-manifest.83f8b9cf084b9815f145f2e7a9dbe507.js": "/moneyCounter/precache-manifest.83f8b9cf084b9815f145f2e7a9dbe507.js",
+    "precache-manifest.53a4410192d83dfcf3e03611284869b8.js": "/moneyCounter/precache-manifest.53a4410192d83dfcf3e03611284869b8.js",
     "service-worker.js": "/moneyCounter/service-worker.js",
     "static/css/3.ec80304a.chunk.css.map": "/moneyCounter/static/css/3.ec80304a.chunk.css.map",
     "static/css/4.b821a9a8.chunk.css.map": "/moneyCounter/static/css/4.b821a9a8.chunk.css.map",
@@ -33,6 +33,6 @@
     "static/js/runtime-main.5d6f2bf2.js",
     "static/js/2.ae6ab593.chunk.js",
     "static/css/main.968f3a62.chunk.css",
-    "static/js/main.eb45ce21.chunk.js"
+    "static/js/main.bea05913.chunk.js"
   ]
 }
