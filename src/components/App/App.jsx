@@ -19,14 +19,20 @@ import AppStepManager from '../AppStepManager';
 import Spinner from '../Spinner';
 import { routes } from '../../utils/constants';
 import Audio from '../Audio/Audio';
-import Modals from '../Modals/Modals';
+// import Modals from '../Modals/Modals';
 // import handleActiveTabClose from '../../utils/handleActiveTabClose';
 import Counter from '../Counter/Counter';
 import { checkUserAuth } from '../../redux/authReducer/authActionCreators';
+import asyncComponent from '../asyncComponent/asyncComponent';
 
 import './App.scss';
 const AppFooter = React.lazy(() => import('../AppFooter'));
 const PersonalHistory = React.lazy(() => import('../PersonalHistory'));
+
+// probably should be used in Route component
+const AsyncModals = asyncComponent(() => import('../Modals/Modals'));
+
+
 
 
 // сохранять зарплату, если вошёл в аккаунт:
@@ -93,7 +99,7 @@ const App = () =>  {
             />
             <Spinner />
             <Audio />
-            <Modals />
+            <AsyncModals />
 
 
           </div>
