@@ -26,3 +26,12 @@
     outline: none;
   }
 }
+
+@include phone_tablet {
+  .AppFooter__primaryButtonContainer {
+    // flex-direction: row;
+    min-height: 0;
+    margin-bottom: 0;
+  }
+
+}

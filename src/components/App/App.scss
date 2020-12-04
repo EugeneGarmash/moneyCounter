@@ -14,12 +14,10 @@ body,
 .App,
 #root > [data-radium] {
   height: 100%;
-  overflow: hidden;
+  // overflow: hidden;
+  min-width: 375px;
+  min-height: 667px;
 }
-
-
-
-
 
 .App {
   text-align: center;
@@ -29,17 +27,17 @@ body,
   color: #e6e0e0;
 }
 
-.AppHeader {
-  @include fl-col-jc(center);
-  font-size: calc(10px + 2vmin);
-  margin-bottom: 50px;
-}
-
 .container {
   width: 100%;
   @include fl-col;
 
   @include tablet_desktop {
     max-width: 600px;
+  }
+}
+
+@include phone_tablet {
+  .App {
+    padding: 15px 10px;
   }
 }

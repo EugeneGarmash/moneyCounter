@@ -29,7 +29,7 @@ const CounterStep = ({counterState}) => {
         <p className={classes.CounterStep__noPaddingItem}>
           for the last {getCorrectTimeName(counterState.secondsPassed)}
         </p>
-        <p>You get ~{counterSalaryStep.toFixed(2)} items per {counterTimeStep / 1000} second(s)</p>
+        <p className={classes.CounterStep__salaryPerSecond}>You get ~{counterSalaryStep.toFixed(2)} items per {counterTimeStep / 1000} second(s)</p>
       </div>
       <Animation />
       <ul className={classes.CounterStep__entertainmentModes}>

@@ -1,4 +1,4 @@
-import { changeTrack, launchAnAudio, pauseAudio, stopAudio } from "../audioReducer/audioReducer";
+import { changeTrack, launchAnAudio, pauseAudio, stopAudio, changeSource } from "../audioReducer/audioReducer";
 
 const TOGGLE_APP_STATE = 'TOGGLE_APP_STATE';
 const TOGGLE_APP_SPINNER = 'TOGGLE_APP_SPINNER';
@@ -34,7 +34,17 @@ export const changeEntertainmentMode = payload => (dispatch, getState) => {
 
   dispatch({ type: CHANGE_ENTERTAINMENT_MODE, payload: name });
 
-  if (!counterIsActive) { // leave audio muted
+  // 1
+  // if (!counterIsActive) { // leave audio muted
+  //   console.log("🚀 ~ file: appReducer.js ~ line 38 ~ counterIsActive", counterIsActive, audioInstance);
+  //   return;
+  // }
+
+  // 2
+  if (!counterIsActive) {
+    console.log('!!!!!!!!!!!');
+    dispatch(pauseAudio());
+    dispatch(changeSource(sound));
     return;
   }
 

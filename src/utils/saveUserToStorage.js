@@ -5,7 +5,7 @@ export const checkUserLogin = () => {
 }
 
 export const saveUserToStorage = userData => {
-console.log("🚀 ~ file: saveUserToStorage.js ~ line 8 ~ userData", userData);
+// console.log("🚀 ~ file: saveUserToStorage.js ~ line 8 ~ userData", userData);
   localStorage.setItem('userData', JSON.stringify(userData))
 }
 

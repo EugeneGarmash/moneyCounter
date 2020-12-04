@@ -82,7 +82,7 @@ const AppMainButton = props => {
               classNames={classes.AppMainButton}
               onClick={handlePause}
             />
-          : <div>
+          : <div className={classes.AppMainButton__pausedButtonsContainer}>
               <div className={classes.AppMainButton__buttonContainer}>
                 <Button
                   textContent='run'

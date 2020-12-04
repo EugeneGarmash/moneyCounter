@@ -1,6 +1,7 @@
 TODOS
 
-0) fix custiim url for github pages
+Модалка аус уходит за менюМадоал
+
 
 1) share with friends buttons
   const shareViaWhatsApp = () => {

@@ -25,7 +25,7 @@ ReactDOM.render(
   <React.StrictMode> {/** renders everything twice */}
     <Provider store={store}>
       <App />
-    </Provider>,
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

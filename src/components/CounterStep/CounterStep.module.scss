@@ -23,3 +23,18 @@
 .CounterStep__entertainmentItem {
   flex-grow: 1;
 }
+
+@include phone_tablet {
+  .mainInfoContainer {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-height: 695px) {
+  .mainInfoContainer {
+    margin-bottom: 12.5px;
+  }
+  .CounterStep__salaryPerSecond {
+    margin: 7.5px 0;
+  }
+}

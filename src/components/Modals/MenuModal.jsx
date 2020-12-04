@@ -85,6 +85,11 @@ const MenuModal = () => {
             width: 650px;
           }
         }
+        @media (max-width: 767px) {
+          .MenuModal {
+            padding: 0px;
+          }
+        }
         .MenuModal__menuList {
           display: flex;
           flex-direction: column;

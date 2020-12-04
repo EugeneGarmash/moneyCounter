@@ -43,12 +43,12 @@ export const setAuthSuccess = payload => ({ type: AUTH_SUCCESS, payload, }); // 
 export const setAuthError = payload => ({ type: AUTH_ERROR, payload, });
 
 export const saveUserSalary = userSalaryData => (dispatch, getState) => {
-console.log("🚀 ~ file: authActionCreators.js ~ line 46 ~ userSalaryData", userSalaryData);
+// console.log("🚀 ~ file: authActionCreators.js ~ line 46 ~ userSalaryData", userSalaryData);
 
   const userEmail = getState().auth.success.email;
   const localId = getState().auth.success.localId;
-  console.log('object', getState().auth.success);
-  console.log("🚀 ~ file: authActionCreators.js ~ line 49 ~ saveUserSalary ~ localId", localId)
+  // console.log('object', getState().auth.success);
+  // console.log("🚀 ~ file: authActionCreators.js ~ line 49 ~ saveUserSalary ~ localId", localId)
 
   fetch(`https://eugene-s-project-72ed7.firebaseio.com/salaries/${localId}.json`,
     {
@@ -61,10 +61,10 @@ console.log("🚀 ~ file: authActionCreators.js ~ line 46 ~ userSalaryData", use
     }
   )
     .then(response => {
-      console.log("🚀 ~ file: authActionCreators.js ~ line 49 ~ response", response);
+      // console.log("🚀 ~ file: authActionCreators.js ~ line 49 ~ response", response);
     })
     .catch(error => {
-      console.log("🚀 ~ file: authActionCreators.js ~ line 52 ~ error", error);
+      // console.log("🚀 ~ file: authActionCreators.js ~ line 52 ~ error", error);
     })
 }
 
@@ -81,12 +81,12 @@ export const getNewToken = () => {
 
 export const checkUserAuth = () => dispatch => {
   const userData = JSON.parse(localStorage.getItem('userData'));
-  console.log("-------->", userData);
+  // console.log("-------->", userData);
   if (!userData || !userData.token || !userData.expirationDate) {
-    console.log('!!!!!!!!!!!!!!!');
+    // console.log('!!!!!!!!!!!!!!!');
     dispatch(logout());
   } else {
-    console.log('hey');
+    // console.log('hey');
     const expirationDate = new Date(userData.expirationDate);
     if ( expirationDate > new Date()) {
       dispatch(setAuthSuccess(userData)); // structure!
@@ -100,7 +100,7 @@ export const checkUserAuth = () => dispatch => {
 }
 
 export const checkAuthTimeout = expirationTime => (dispatch) => {
-  console.log("🚀 ~ file: authActionCreators.js ~ line 96 ~ expirationTime", expirationTime);
+  // console.log("🚀 ~ file: authActionCreators.js ~ line 96 ~ expirationTime", expirationTime);
   setTimeout(() => {
     dispatch(logout());
   }, expirationTime * 1000)
@@ -129,11 +129,11 @@ export const postPersonalData = (mode, userData) => dispatch => {
         localId,
       } = response.data;
 
-      console.log("🚀 ~ file: authActionCreators.js ~ line 134 ~ response.data", response.data)
-      console.log("🚀 ~ file: authActionCreators.js ~ line 133 ~ localId", localId)
+      // console.log("🚀 ~ file: authActionCreators.js ~ line 134 ~ response.data", response.data)
+      // console.log("🚀 ~ file: authActionCreators.js ~ line 133 ~ localId", localId)
 
       dispatch(setAuthSuccess({ idToken, email, expiresIn, localId }))
-      console.log('??????/')
+      // console.log('??????/')
       dispatch(checkAuthTimeout(expiresIn)); // ?
       dispatch(toggleAppSpinner());
       dispatch(closeModal(AUTH_MODAL));
