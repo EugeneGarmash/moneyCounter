@@ -2,6 +2,7 @@ import React, {
   Suspense,
   useEffect,
   useState,
+  useRef,
 } from 'react';
 import {
   useDispatch,
@@ -14,12 +15,19 @@ import {
   Route,
 } from "react-router-dom";
 
+import {
+  openModal,
+  closeModal,
+  MENU_MODAL,
+  AUTH_MODAL,
+} from '../../redux/modalReducer/modalReducer';
+
 import AppHeader  from '../AppHeader/AppHeader';
 import AppStepManager from '../AppStepManager';
 import Spinner from '../Spinner';
 import { routes } from '../../utils/constants';
 import Audio from '../Audio/Audio';
-// import Modals from '../Modals/Modals';
+import Modals from '../Modals/Modals';
 // import handleActiveTabClose from '../../utils/handleActiveTabClose';
 import Counter from '../Counter/Counter';
 import { checkUserAuth } from '../../redux/authReducer/authActionCreators';
@@ -32,12 +40,13 @@ const PersonalHistory = React.lazy(() => import('../PersonalHistory'));
 // probably should be used in Route component
 const AsyncModals = asyncComponent(() => import('../Modals/Modals'));
 
-
-
-
 // сохранять зарплату, если вошёл в аккаунт:
 // сохранять зарплату по стопу
 // сохранять зарплату, когда выхожу с приложения
+
+
+
+
 
 const App = () =>  {
 
@@ -70,6 +79,12 @@ const App = () =>  {
             <AppHeader/>
 
 
+{/**
+ * memoization
+ * redux - try redux
+ * 
+ */}
+
             <Switch>
               <Route path={routes.info}>
                 <p>I am Eugene Garmash and I am a web developer</p>
@@ -80,7 +95,7 @@ const App = () =>  {
                 </Suspense>
               </Route>
               <Route path={routes.main}>
-                <AppStepManager counterState={counterState}/>
+                <AppStepManager counterState={counterState} />
                 <Suspense fallback={null}>
                   <AppFooter
                     setCounterPassed={setCounterPassed}

@@ -22,11 +22,11 @@ const store = createStore(
 );
 
 ReactDOM.render(
-  <React.StrictMode> {/** renders everything twice */}
+  // <React.StrictMode> {/** renders everything twice */}
     <Provider store={store}>
       <App />
-    </Provider>
-  </React.StrictMode>,
+    </Provider>, // coma might be redundant
+  // </React.StrictMode>,
   document.getElementById('root')
 );
 
