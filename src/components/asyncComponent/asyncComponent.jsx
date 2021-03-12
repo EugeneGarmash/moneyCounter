@@ -9,6 +9,7 @@ const asyncComponent = (importComponent) => {
     componentDidMount() {
       importComponent()
         .then(component => {
+        // console.log("🚀 ~ file: asyncComponent.jsx ~ line 12 ~ extends ~ componentDidMount ~ component", component);
           this.setState({
             component: component.default
           });

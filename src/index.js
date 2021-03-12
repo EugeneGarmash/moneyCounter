@@ -7,6 +7,8 @@ import { createStore, compose , applyMiddleware } from 'redux';
 import * as serviceWorker from './serviceWorker';
 import thunk from 'redux-thunk';
 import rootReducer from './redux/store';
+import createSagaMiddleware from 'redux-saga';
+import { checkAuthTimeoutSaga, logoutSaga } from '../src/redux/sagas/authSaga';
 
 const composeEnhancers =
   process.env.NODE_ENV === 'development'
@@ -16,10 +18,14 @@ const composeEnhancers =
   compose
 ;
 
+const sagaMiddleware = createSagaMiddleware();
+
 const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(thunk))
+  composeEnhancers(applyMiddleware(thunk, sagaMiddleware))
 );
+
+sagaMiddleware.run(logoutSaga);
 
 ReactDOM.render(
   // <React.StrictMode> {/** renders everything twice */}

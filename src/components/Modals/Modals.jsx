@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 
 import AuthentificationModal from './AuthentificationModal';
-import MenuModal from './MenuModal';
+// import MenuModal from './MenuModal';
 
 
 const Modals = () => {
@@ -11,7 +11,7 @@ const Modals = () => {
   return (
     <Fragment>
       <AuthentificationModal /> 
-      <MenuModal />
+      {/* <MenuModal /> */}
     </Fragment>
   )
 }
