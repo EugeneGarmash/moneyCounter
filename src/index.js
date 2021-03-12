@@ -8,7 +8,7 @@ import * as serviceWorker from './serviceWorker';
 import thunk from 'redux-thunk';
 import rootReducer from './redux/store';
 import createSagaMiddleware from 'redux-saga';
-import { checkAuthTimeoutSaga, logoutSaga } from '../src/redux/sagas/authSaga';
+import { logoutSaga } from '../src/redux/sagas/authSaga'; // checkAuthTimeoutSaga
 
 const composeEnhancers =
   process.env.NODE_ENV === 'development'

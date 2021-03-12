@@ -2,7 +2,7 @@ import React, {
   Suspense,
   useEffect,
   useState,
-  useRef,
+  // useRef,
 } from 'react';
 import {
   useDispatch,
@@ -16,10 +16,10 @@ import {
 } from "react-router-dom";
 
 import {
-  openModal,
-  closeModal,
-  MENU_MODAL,
-  AUTH_MODAL,
+  // openModal,
+  // closeModal,
+  // MENU_MODAL,
+  // AUTH_MODAL,
 } from '../../redux/modalReducer/modalReducer';
 
 import AppHeader  from '../AppHeader/AppHeader';
@@ -27,7 +27,7 @@ import AppStepManager from '../AppStepManager';
 import Spinner from '../Spinner';
 import { routes } from '../../utils/constants';
 import Audio from '../Audio/Audio';
-import Modals from '../Modals/Modals';
+// import Modals from '../Modals/Modals';
 // import handleActiveTabClose from '../../utils/handleActiveTabClose';
 import Counter from '../Counter/Counter';
 import { checkUserAuth } from '../../redux/authReducer/authActionCreators';
@@ -69,7 +69,7 @@ const App = () =>  {
 
     dispatch(checkUserAuth());
 
-  }, []);
+  }, [dispatch]);
 
   return (
     <BrowserRouter basename={process.env.NODE_ENV !== 'development' ? 'moneyCounter' : ''}>

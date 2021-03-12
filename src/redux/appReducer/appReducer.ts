@@ -4,9 +4,16 @@ const TOGGLE_APP_STATE = 'TOGGLE_APP_STATE';
 const TOGGLE_APP_SPINNER = 'TOGGLE_APP_SPINNER';
 const CHANGE_ENTERTAINMENT_MODE = 'CHANGE_ENTERTAINMENT_MODE';
 
-const initialState = {
+interface AppState {
+  appIsInSalaryStep: boolean,
+  entertainmentMode: string,
+  spinner: boolean,
+}
+
+const initialState: AppState = {
   appIsInSalaryStep: true,
   entertainmentMode: '',
+  spinner: false,
 }
 
 export const toggleAppState = () => (dispatch, getState) => {
@@ -16,12 +23,26 @@ export const toggleAppState = () => (dispatch, getState) => {
     dispatch(stopAudio());
   }
 
-  return dispatch({
+  return dispatch({ // returning the dispatch might be redundant
     type: TOGGLE_APP_STATE,
   });
 };
 
-export const toggleAppSpinner = () => ({
+type ToggleAppSpinnerActionType = {
+  type: typeof TOGGLE_APP_SPINNER,
+}
+
+type ToggleAppSpinnerActionCreator = () => ToggleAppSpinnerActionType;
+
+// interface ToggleAppSpinner  {
+//   (): ToggleAppSpinnerActionType
+// }
+
+// export const toggleAppSpinner: ToggleAppSpinnerActionCreator = () => ({
+//   type: TOGGLE_APP_SPINNER,
+// });
+
+export const toggleAppSpinner = (): ToggleAppSpinnerActionType => ({
   type: TOGGLE_APP_SPINNER,
 });
 
@@ -54,7 +75,7 @@ export const changeEntertainmentMode = payload => (dispatch, getState) => {
 };
 
 
-const appReducer = (state = initialState, action) => {
+const appReducer = (state = initialState, action): AppState => {
 
   switch(action.type) {
 

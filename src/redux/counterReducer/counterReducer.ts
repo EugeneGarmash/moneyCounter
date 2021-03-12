@@ -12,20 +12,53 @@ import {
 const SET_COUNTER_SALARY_STEP = 'SET_COUNTER_SALARY_STEP';
 const TOGGLE_COUNTER_STATE = 'TOGGLE_COUNTER_STATE';
 
-const initialState = {
+
+// types start
+
+interface CounterReducerInitialState {
+  counterTimeStep: number,
+  counterTimeStepInSeconds: number,
+  counterSalaryStep: number,
+  counterIsActive: boolean,
+}
+
+// type GeneralActionObjectType = { // object
+//   type: string,
+//   payload?: {
+//     modalName?: string,
+//     data?: any,
+//   },
+// }
+// type DispatchType = (arg0?: GeneralActionObjectType | ThunkType) => GeneralActionObjectType | ThunkType; // arg0?: GeneralActionObjectType
+// type ThunkType = DispatchType;
+// // type GeneralActionThunkType = Dispatch;
+
+// // dispatch: принимает что-то или функцию, отдаёт объект или ничего // dispatch(//...)
+// // 
+
+// type ThunkCreatorResultType = (dispatch: ThunkType, getState: () => any) => any;
+// // type ThunkCreator = () => ThunkCreatorResultType;
+
+// type ToggleCounterThunkCreator = () => ThunkCreatorResultType;
+// type SetCounterSalaryStepThunkCreator = (multiplier: number | null) => ThunkCreatorResultType;
+// type InitializeACounterThunkCreator = (token: string) => ThunkCreatorResultType;
+// types end
+
+const initialState: CounterReducerInitialState = {
   counterTimeStep,
   counterTimeStepInSeconds,
   counterSalaryStep: 0,
   counterIsActive: false,
 }
 
-export const toggleCounterState = () => (dispatch, getState) => {
+// is thunk necessary here? If not, it should be removed
+export const toggleCounterState = () => (dispatch, _) => {
   return dispatch({ type: TOGGLE_COUNTER_STATE });
 };
 
-export const initializeACounter = (token) => (dispatch, getState) => {
+export const initializeACounter = (token) => (dispatch, _) => {
   dispatch(toggleAppState());
-  dispatch(setCounterSalaryStep());
+  dispatch(setCounterSalaryStep(null));
   dispatch(toggleCounterState());
   dispatch(changeEntertainmentMode(Object.entries(entertainmentMode)[0]));
 
@@ -56,7 +89,7 @@ export const setCounterSalaryStep = multiplier => (dispatch, getState) => {
     (multiplier || 1)
   ;
 
-  return dispatch({
+  return dispatch({ // is return necessary here? If not, it should be removed
     type: SET_COUNTER_SALARY_STEP,
     payload,
   });
