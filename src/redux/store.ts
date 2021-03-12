@@ -15,4 +15,6 @@ const rootReducer = combineReducers({
     audio: audioReducer,
 });
 
+export type RootState = ReturnType<typeof rootReducer>;
+
 export default rootReducer;

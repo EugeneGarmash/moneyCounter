@@ -15,7 +15,26 @@ import { pauseAudio, playAudio } from '../../redux/audioReducer/audioReducer';
 
 import Button from '../Button/Button';
 
-const AppMainButton = props => {
+type PropsType = {
+  setCounterPassed: (data: object) => any,
+  counterState: {
+    secondsPassed: number,
+    counterValue: number,
+  },
+  appIsInSalaryStep: boolean,
+  counterIsActive: boolean,
+  salaryValue: number,
+  toggleAppState: () => any,
+  toggleCounterState: () => any,
+  setCounterSalaryStep: () => any,
+  initializeACounter: () => any,
+  onPauseAudio: () => any,
+  onPlayAudio: () => any,
+  onSaveUserSalary: (data: object) => any,
+}
+
+
+const AppMainButton: React.FC<PropsType> = props => {
 
   const {
     counterState,

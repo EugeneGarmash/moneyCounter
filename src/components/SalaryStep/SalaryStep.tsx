@@ -12,6 +12,7 @@ import { initializeACounter } from '../../redux/counterReducer/counterReducer';
 import {
   AUTH_MODAL
 } from '../../redux/modalReducer/modalReducer';
+import { RootState } from '../../redux/store';
 
 import buttonClasses from '../AppMainButton/AppMainButton.module.scss';
 import './SalaryStep.scss';
@@ -39,6 +40,25 @@ const salaryInputStyles = {
     backgroundColor: 'orange',
   }
 }
+
+type MapStateToPropsType = {
+
+}
+
+type mapDispatchToPropsType = {
+
+}
+
+type OwnPropsType = {
+
+}
+
+// OR type PropsFromRedux = ConnectedProps<typeof connector>
+
+type SalaryStepPropsType =
+  MapStateToPropsType &
+  mapDispatchToPropsType &
+  OwnPropsType;
 
 const SalaryStep = props => {
 
@@ -111,14 +131,33 @@ SalaryStep.propTypes = {
 //     setSalaryValue,
 // })(Radium(SalaryStep));
 
-export default connect(
-  state => ({
+const mapStateToProps = (state: RootState) => {
+  return {
     salaryValue: state.salary.salaryValue,
     authModalIsOpen: state.modal[AUTH_MODAL].isOpen,
-  }), dispatch => ({
-    setSalaryValue: value => dispatch(setSalaryValue(value)),
-    toggleAppState: () => dispatch(toggleAppState()),
-    setCounterSalaryStep: () => dispatch(setCounterSalaryStep()),
-    initializeACounter: (token) => dispatch(initializeACounter(token)),
-  })
+  }
+};
+
+const mapDispatchToProps = dispatch => ({
+  setSalaryValue: value => dispatch(setSalaryValue(value)),
+  toggleAppState: () => dispatch(toggleAppState()),
+  setCounterSalaryStep: () => dispatch(setCounterSalaryStep()),
+  initializeACounter: (token) => dispatch(initializeACounter(token)),
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
 )(Radium(SalaryStep));
+
+// export default connect(
+//   state => ({
+//     salaryValue: state.salary.salaryValue,
+//     authModalIsOpen: state.modal[AUTH_MODAL].isOpen,
+//   }), dispatch => ({
+//     setSalaryValue: value => dispatch(setSalaryValue(value)),
+//     toggleAppState: () => dispatch(toggleAppState()),
+//     setCounterSalaryStep: () => dispatch(setCounterSalaryStep()),
+//     initializeACounter: (token) => dispatch(initializeACounter(token)),
+//   })
+// )(Radium(SalaryStep));

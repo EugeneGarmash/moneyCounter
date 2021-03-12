@@ -16,6 +16,10 @@ import buttonClasses from '../Button/Button.module.scss';
 
 // USE PARAMS
 
+type PropsType = {
+  // openModal: 
+}
+
 const MenuModal = () => {
 
   const dispatch = useDispatch();

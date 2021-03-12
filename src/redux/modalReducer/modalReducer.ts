@@ -24,9 +24,9 @@ type ModalReducerInitialState = {
 //   },
 // }
 
-type OpenModalActionType = {
+type OpenModalActionType = { // dispatch(openModal(AUTH_MODAL)); !!!
   type: typeof OPEN_MODAL,
-  payload: {
+  payload?: {
     modalName: string,
     data: any,
   }
@@ -65,7 +65,7 @@ const initialState: ModalReducerInitialState = { // ModalReducerInitialState
   }
 }
 
-export const openModal = (modalName, data): OpenModalActionType => { // OpenModalActionCreator
+export const openModal = (modalName: string, data?: object): OpenModalActionType => { // OpenModalActionCreator
   return {
     type: OPEN_MODAL,
     payload: {
@@ -75,7 +75,7 @@ export const openModal = (modalName, data): OpenModalActionType => { // OpenModa
   }
 }
 
-export const closeModal = (modalName): CloseModalActionType => { // CloseModalActionActionCreator
+export const closeModal = (modalName: string): CloseModalActionType => { // CloseModalActionActionCreator
   return {
     type: CLOSE_MODAL,
     payload: {

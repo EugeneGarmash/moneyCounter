@@ -8,10 +8,11 @@ import * as serviceWorker from './serviceWorker';
 import thunk from 'redux-thunk';
 import rootReducer from './redux/store';
 import createSagaMiddleware from 'redux-saga';
-import { logoutSaga } from '../src/redux/sagas/authSaga'; // checkAuthTimeoutSaga
+import { logoutSaga } from './redux/sagas/authSaga'; // checkAuthTimeoutSaga
 
 const composeEnhancers =
   process.env.NODE_ENV === 'development'
+  /** @todo create global ts config */
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     : null ||
   // window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ trace: true, traceLimit: 25 }) ||

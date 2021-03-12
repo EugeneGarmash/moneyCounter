@@ -1,10 +1,18 @@
 import React from 'react';
 
+type PropsType = {
+  
+}
+
+type StateType = {
+  component: React.ReactElement | null,
+}
+
 const asyncComponent = (importComponent) => {
-  return class extends React.Component {
-    state = {
+  return class extends React.Component<PropsType, StateType> {
+    state = { /** @todo any type ? */
       component: null,
-    }
+    };
 
     componentDidMount() {
       importComponent()
